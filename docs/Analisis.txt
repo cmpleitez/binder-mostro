@@ -1,0 +1,72 @@
+PROCEDIMIENTO GENERAL:
+
+* Registro y enrolamiento del admnistrador del sistema
+* Registro y enrolamiento del supervisor
+* Registro y enrolamiento del gestor de calidad
+* Registro y enrolamiento del cajero
+* Registro y enrolamiento del operador
+* Registro de productos/servicios/insumos
+* Registro y enrolamiento de productos/ofertas
+* Compras en el portal de ofertas/productos
+* Compras en el portal de productos/servicios/insumos
+* Reporte de actividades
+* Revisión de actividades
+* Tratamiento de errores en portal de compras
+* Tratamiento de errores en bandeja de trabajo
+* Supervisión y/o anulación de solicitudes/actividades
+* Supervisión de valores estadísticos
+
+LOGISTICA:
+
+TIPOS DE BIENES:
+01. Permisos: no se delegan
+02. Servicios (ya sean manuales o automatizados): se delegan (incluye un estado "facturable") (aqui se pueden incluir las autorizaciones)
+03. Productos: se delegan
+
+- La prioridad de atención al cliente es automatica, y la pauta la da el operador, la primera solicitud que reporte es la primera que llegará al gestor de calidad para su revisión.
+
+- Cada usuario puede pertenecer a uno o varios roles según lo organice el administrador del sistema.
+
+- Un re-proceso indica que una actividad se hizo bien y/o se hizo mal un número indeterminado de veces en orden de correlativo, sin embargo no va en el orden mal y luego bien, puede ser bien y luego mal y luego bien, y sus combinaciones.
+
+- La unidad básica de trabajo es el número de carretilla (número de orden), el cual es un correlativo en base al cual se realizaran la serie de actividades consecuentes. La orden de trabajo está formada de una o más solicitudes (requisitions), en el proceso las "solicitudes" se derivan en "actividades" (requisition_user), las cuales son asignadas al usuario autor, es decir el usuario que las ejecutó.
+
+* Sinónimos técnicos:
+[Cart = Order] <=>
+[Offer = Pack = Producto = Item = ItemCustom = Requisition = CustomRequisition] <=>
+[Service = Supply = Activity = requisition_user ]
+
+* Un "Cart" (Carretilla/orden de trabajo) es un conjunto de "Requisitions" (Solicitudes) y éstas últimas se derivan a los usuarioso en "requisition_user" (actividades asignadas a usuarios específicos).
+
+* Cada uno, la oferta y el producto tienen precios independientes.
+
+* Todo usuario que se autoregistre será cliente = autoservicio, para que un usuario registrado pueda asistir a clientes debe sen enrolado por el administrador como operador = asistente.
+
+* El número de orden equivale al número de carretilla y al número de factura, el concepto actual de la factura de papel, para binder es una simple impresión pues la factura ya está hecha, ahi para latinizar el concepto, se puede permitir al cajero que retire items que no quiere que aparezcan en el documento llamado factura de papel.
+
+* El cierre de caja dependerá de un servicio-prerequisito: la facturación, pues ésta última define lo que se le va cobrar al cliente. Hay dinero que no entra a caja y son las facturas al crédito, luego hay categorías de dinero que entra a caja, categorías que se forman según la forma de pago: pos, efectivo, bitcoin, cheque y pago en línea.
+
+* Primero se registran en la sesión de caja todos los items de una factura validada, posteriormente se procederá a imprimir la factura en papel si es necesario para el usuario. Sigue muriendo el concepto de factura de papel y convirtiendose en una simple impresión.
+
+* Binder maneja precios, y no valida si tienen IVA o no, eso lo determina el usuario de forma parametrizada.
+
+* Debe incorporarse un tratamiento de errores para la facturación.
+
+* Facturar significa confirmar contra ingreso de dinero, que la solicitud es válida y correspondiente al dinero recibido del cliente, que caiga sobre papel es un proceso posterior.
+
+* La actividad "pago realizado" no indica un ingreso a caja, ya que es solo una actividad de seguimiento y trazabilidad, o de gestión. El ingreso a caja se da cuando se factura digitalmente y/o materialmente una orden.
+
+--------------------------- PIVOTES DE LA APP ----------------------------------------------
+- Hay tres tipos de actividades (tasks)
+	1. Servicios informáticos (Incluidos o no en el menú del usuario)
+	2. Asistencia humana (Servicios)
+	3. Productos o bienes.
+Para el role se usan asistencias humanas y servicios informáticos.
+Para la oferta se usan productos y asistencias humanas.
+La bandeja de trabajo puede contener los cuatro tipos de servicios: productos, asistencias humanas facturadas y no facturadas, y servicios infomráticos
+
+------------------------- RESOLUCIONES A NECESIDADES PLANTEADAS ---------------------------------------------------------------------------------
+PIVOTES DE LA APP:
+Para el role se usan asistencias humanas y servicios informáticos.
+Para la oferta se usan productos y asistencias humanas.
+Para la bandeja de trabajo del supervisor se usan los productos y las asistencias humanas.

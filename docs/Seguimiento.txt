@@ -1,0 +1,85 @@
+ AJUSTES --------------------------------------------------------------------------
+
+- PLATAFORMA: ©K
+	...🟠 Funcionalidad para cambiar manualmente las unidades en items de una oferta
+	👌 🟠 Cuadre de descarga para productos: Se compraron dos ofertas y el producto respectivo fue afectado 2 unidades en su inventario
+	👌 🟠 Cuadre de descarga para ofertas : Los items incluidos en la oferta fueron afectados por la disminución de sus inventarios
+
+	...🟠 Bipartición de binder a binder-mostro
+	
+	🟠 Pruebas de implementación en ambiente productivo virtual
+
+👌- SALA DE VENTAS: ©K
+
+- FACTURACIÓN: ©K
+
+- CIERRE DE CAJA: ©K
+
+- CONTROL DE INVENTARIO: ©K
+
+- SISTEMA DE RESPALDOS: ©K
+
+- CONTROL DE CALIDAD Y SUPERVISIÓN: ©K
+
+ - SERVICIOS PROYECTADOS ---------------------------------------------------
+	 	SERVICIOS PROMOCIONALES:
+		 	- permisos para uso de un nuevo usuario "binder" en lugar de "sa"
+			- offer.bind: agregar search
+			- Anulación de facturas en los cuadres de caja: el supervisor unicamente puede ver su cuadre de caja con el panel de control completo, el servicio de anulaciòn de facturas para operadores aún no está construido, crear "cashboxits".
+			- Código de barras
+			- Offer Requisition's Alikes
+			- Envio de factura digital: por seguridad se debe enviar la versión html, para evitar la replicación y fraude por modificación.
+			- Se puede implementar una rutina de soporte para cada producto o servicio de mano de obra agregando un item de soporte por cada periodo pagado y se agrega ademas las fechas en finalización o vencimiento de cada soporte.
+			- en el historico de cajas no muestra en la pagina de entrada las cajas de hoy
+			- task.its: no deberia verse el boton reportar pues el control de calidad no reporta las tareas de un operador
+			- el "gestor de tareas"
+			- mascaras de salida
+		 	+ tal pareciera que otras columnas de datos que hay en la zona de las tablas padres de la transaccional, requiriesen que se trasladen a la transaccional debido a la necesidad de aplicación de controles de calidad sobre las mismas
+		 	+ hay una posible repeticion de tabla en las tablas "stock" y "branch_service", por lo sensible del error hay que procesar éste item por separado y de manera independiente
+
+PROCESO BASE --------------------------------------------------------------
+El proceso implicaría que un vendedor haga la negociación del producto/servicio y lo registre como facturación futura, en un segundo paso lo facture digitalmente y en un tercer paso imprima la factura. Tambien podría hacer esos tres pasos en una sola sesión, cuando se trate de una facturación contra entrega. Esto basado en que el purchase es solo una confirmación de la venta, pero quien en realidad confirma el pago es el "facturado".
+
+👁️ Se ha eliminado la idea que los servicios van pegados a uno o más productos, y se adoptado la nueva idea que los servicios llevan, en su especificación, el nombre del producto que se ensamblará al final del proceso, la categoría "atención al cliente queda disponible para un posible uso futuro", el filtro que se usará en todas partes es "facturable" esto en sustitución de dicha categoría la cual era utilizada antes para éste efecto, servicios administrativos y de atención al cliente ahora pueden ser enrolados y funcionar automáticamente asignandose a sus operadores, y estos a la vez podrán procesarlos si que aparezcan ejemplo en la factura, pero si tendran que ser abastecidos o programados como metas, por parte del bodeguero
+👁️ La mano de obra debe procesarse por medio de una oferta para que adquiera el concepto del producto que se está fabricando o ensamblando
+
+. AGREGAR ITEMS: según solicitud del cliente
+. ENVIAR CONTIZACIÓN (Opcional)
+. VERIFICAR LOS ITEMS DE LA SOLICITUD (Opcional)
+. IMPRIMIR NUMERO DE ATENCIÓN(Opcional): El número de atención es el mismo que el número digital de factura
+. CONFIRMAR COMPRA: Verificación obligatoria de existencias, descarga del inventario y asignación de actividades a los operadores
+. PROCESAMIENTO:
+	. Atención al cliente (Servicio interno)
+	. Diseño (De pago)
+	. Fabricación/Ensamblaje (De pago)
+	. Gestión de calidad (Servicio interno)
+	. Almacenaje (Servicio interno)
+	. Facturación (Servicio interno)
+. FACTURACIÓN: El operador ubica el número de atención en la aplicación web
+. ENTREGA: En tienda o a domicilio
+. CIERRE DE CAJA: Incluye anulación de facturas
+
+USUARIOS DE PRUEBA  --------------------------------------------------------------
+Vendedor : Casandra Pinochet	cpinochet@gmail.com
+Cajero: Josefina Cuadra	jcuadra@gmail.com
+Diseñador: Jose Pint 	jpinto@gmail.com
+Operador: Armando Paredes	aparedes@gmail.com
+Gestor de calidad: Regina Alumbración ralumbracion@gmail.com
+Supervisor: Marisol Miranda	mmiranda@gmail.com
+
+
+CAPACITACIÓN ----------------------------------------------------------------------
+* Capacitación:
+	- Craquear el tema directivas de blade (tema numero 145): muy util para manejar el entorno de produccion y desarrollo, y para usar el comando: console.log('analitys');
+	- En cuanto los servicios no estan pegados al producto para cada operador, tampoco será necesario asignar automaticamente el tipo de servicio "Atención al cliente" con la finalidad de que pertenezca al vendedor o al cajero.
+
+GLOSARIO ---------------------------------------------------------------------------
+MODALIDAD SERVICIOS: Normalmente debería enrolarse todo el catálogo de productos a cada vendedor para que pueda asignársele la tarea-estado "venido", pero debido a su extensa población, se usa un pivote en base al cual se asignan los productos como tarea-estado; el pivote consiste en el uso de un tipo de servicio llamado "Atención al cliente", y es en base a éste tipo de servicio que se asignan los productos a los operadores como tarea-estado.
+MODALIDAD PRODUCTOS: En ésta modalidad la tarea-estado puede asignarse una a una debido a que su población en el catálogo es baja.
+TAREA-ESTADO: es el nombre de la tarea gramaticalmente en tiempo pasado para que pueda tener ese doble uso, todo ésto para que cuando se lea desde el monitor de actividades pueda verse como un estado resuelto, ésto último es para efectos de cierre de rango por la derecha de la acción, pues hay tres tiempos que podría volver complejo el proceso: inicio, progreso, demora: con ésto de compacta esa complejidad.
+
+
+IMPLMENTACIÓN:
+1. Registrar administrador de Binder-Mostro y asignarle todos los roles menos "Vendedor"
+2. Registrar el operador "Vendedor" y asignarle el role "Vendedor"
+3. Asignar los servicios de mano de obra al rol "Ensamblador"

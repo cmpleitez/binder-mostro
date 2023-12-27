@@ -1,0 +1,283 @@
+ESTANDARES WEB
+    Windows 10
+    Ubuntu Server AMD64 18.04.1
+    Mysql Server 5.7.31 for Linux on x86_64
+    Php 7.2.24 ( 7.4.19 en laragon )
+    Apache 2.4.29 win64 vs16
+    Laravel 5.8.38
+    Plantilla Frest (Forest). Compatible con: Bootstrap 4.x. Browsers compatibles: Firefox, Safari, Opera, Chrome, Edge.
+    Color A: #F05222
+    Color B: #0054A6
+
+----------------------------------- SERVIDOR PC WINDOWS 10  ---------------------------------------------------------------
+    Laragon Full 5.0
+    PHP 7.4.19
+----------------------------------- SERVIDOR LINUX ------------------------------------------------------------------------------
+
+01.05 En el caso de crear servidor linux virtual: Con el Virtual Vox elegir el 1g Ram, 20Gb HD, Volumen fijo, tipo de instalación Linux, Distribución Ubuntu, Red = Adaptador puente, elegir la iso de linux, disco sin partición, seguridad SSH para acceso remoto.
+- Re-crear particiones y formatear con XT3
+- No usar particiones LVM
+- Usar cifrado SSH
+- Usar IP configurada manualmente 192.168.1.0/24 como segmentto de red de [0,255] = 256 unidades
+
+02. Instalar Ubuntu Desktop
+sudo apt update
+sudo apt upgrade
+sudo apt install ubuntu-desktop
+
+03. Instalar sublime text
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+sudo apt-add-repository "deb https://download.sublimetext.com/ apt/stable/"
+sudo apt install sublime-text
+subl
+
+04. Instalar app para tele-soporte
+sudo apt update
+sudo apt -y upgrade
+wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | sudo apt-key add -
+echo "deb http://deb.anydesk.com/ all main" | sudo tee /etc/apt/sources.list.d/anydesk-stable.list
+sudo apt update
+sudo apt install anydesk
+anydesk
+
+05. Instalando Chrome
+sudo nano /etc/apt/sources.list.d/google-chrome.list
+deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
+sudo wget https://dl.google.com/linux/linux_signing_key.pub
+sudo apt-key add linux_signing_key.pub
+sudo apt update && sudo apt install google-chrome-stable
+
+06. Instalar IP estática
+sudo nano /etc/netplan/50-cloud-init.yaml
+
+network:
+    ethernets:
+        enp3s0:
+            dhcp4: false
+            dhcp6: false
+            addresses: [192.168.1.100/24]
+            gateway4: 192.168.1.1
+            nameservers:
+              addresses: [8.8.8.8, 8.8.4.4]
+    version: 2
+    renderer: networkd
+
+sudo netplan apply
+sudo networkctl status
+
+----------------------------------- SERVIDOR WEB ---------------------------------------------------------------------------------
+
+07. Instalar Apache
+sudo apt install apache2
+
+sudo nano /etc/apache2/ports.conf
+listen 8000
+sudo systemctl restart apache2
+apachectl -S
+hostname -I
+http://yourLocalip:8000 (into your browser)
+
+08. Instalar PHP
+sudo apt install php libapache2-mod-php php7.2-curl php7.2-gd php7.2-json php7.2-mbstring php7.2-intl php7.2-mysql php7.2-xml php7.2-zip php7.2-cli php7.2-common
+sudo nano /etc/apache2/mods-enabled/dir.conf
+<IfModule mod_dir.c>
+    DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
+</IfModule>
+php -v
+
+----------------------------------- DEPLOYING PROJECT ---------------------------------------------------------------------------------
+
+09. Deploying Project ( You never deploy the project under linux/root user, you must do it under a regular user with administrative privileges, using sudo prefix )
+cd /var/www/html
+sudo apt install composer
+sudo composer self-update (sudo composer self-update --rollback)
+sudo git clone https://gitlab.com/cmpleitez/binder.git
+cd binder
+sudo composer install
+sudo composer require intervention/image
+cd ..
+sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/binder.com.conf
+sudo nano /etc/apache2/sites-available/binder.com.conf
+
+sudo a2ensite binder.com.conf
+sudo a2dissite 000-default.conf
+sudo chown -R www-data:www-data /var/www/html/binder
+sudo chmod -R 755 /var/www/html/binder
+cd binder
+sudo chown -R www-data:www-data storage
+sudo chown -R www-data:www-data bootstrap/cache
+sudo chmod -R 775 storage
+sudo chmod -R 775 bootstrap/cache
+
+sudo cp .env.example .env
+sudo nano .env
+
+sudo nano /etc/hosts
+IpServidor binder.com
+
+sudo php artisan key:generate
+
+cd /
+sudo a2enmod rewrite
+sudo nano /etc/apache2/apache2.conf
+changing the "AllowOverride" directive for /var/www directory (which is my main directory root): AllowOverride from "none" to "All"
+
+sudo systemctl restart apache2
+apachectl -S
+
+En el explorador web escribe la direccion del sitio:
+binder:8000
+
+----------------------------------- LAUNCHING PROYECT ------------------------------------------------
+//Linux-Apache
+<VirtualHost 192.168.1.11:8000>
+        ServerAdmin webmaster@binder.com
+        ServerName www.binder.com
+        DocumentRoot /var/www/html/binder/public
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+//WINDOWS APACHE SITE ENABLED 00default.conf
+define ROOT "C:/laragon/www/binder/public/"
+define SITE "binder.test"
+
+<VirtualHost *:80>
+    DocumentRoot "${ROOT}"
+    ServerName ${SITE}
+    ServerAlias *.${SITE}
+    <Directory "${ROOT}">
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>
+
+<VirtualHost *:443>
+    DocumentRoot "${ROOT}"
+    ServerName ${SITE}
+    ServerAlias *.${SITE}
+    <Directory "${ROOT}">
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    SSLEngine on
+    SSLCertificateFile      C:/laragon/etc/ssl/laragon.crt
+    SSLCertificateKeyFile   C:/laragon/etc/ssl/laragon.key
+
+</VirtualHost>
+
+----------------------------------- SERVIDOR DE DATOS (Desde la consola de Linux)------------------------------------------------
+
+10. Crear base de datos:
+CREATE SCHEMA `binder` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ;
+
+11. Actualizar instalador general:
+sudo apt update && sudo apt upgrade
+
+12. Instalar el mysql server y limpiar datos de fabrica y configuraciónes de baja seguridad que viene por omisión:
+sudo apt install mysql-server
+sudo mysql_secure_installation
+
+13. Entrar en mysql:
+sudo mysql
+(clave de root)
+
+14. Crear usuario de sistema para implementar en la webapp:
+CREATE USER 'public'@'%' IDENTIFIED BY 'aaT5@125';
+GRANT INSERT,SELECT,UPDATE,DELETE  ON *.* TO 'public'@'%';
+SELECT user FROM mysql.user;
+flush privileges;
+exit
+systemctl status mysql.service
+
+15. Para leer el estatus de la configuracion actual del Mysql Server
+sudo mysqladmin variables | less
+
+16. Configurar la memoria del servidor
+mysql> SET GLOBAL innodb_buffer_pool_size=805306368;
+
+17. Reiniciar el servicio mysql
+sudo systemctl restart mysql
+sudo systemctl enable mysql
+
+------------------------------------ IMPLEMENTAR SEGURIDAD --------------------------------------------------------------
+18. Activando el firewall
+sudo ufw app list
+sudo ufw app info "Apache Full"
+sudo ufw allow in "Apache Full"
+sudo ufw allow 8000/tcp
+sudo ufw enable
+
+------------------------------------ IMPLEMENTAR CORREO Y USO DE IMÁGENES --------------------------------------------------------------
+
+19. Preparar el uso de imágenes
+php artisan storage:link
+
+
+--------------------- IMPLEMENTAR BINDER EN LA NUBE DIGITAL OCEAN---------------------------------------------------------------
+
+21. Implementar via forge en digital ocean:
+
+* Cuenta de correo:
+    cmpleitez.sv@gmail.com
+    aaT5@1250000
+
+* Servidor virtual
+    sudo password: uFEshtAJLH011jdgbHGm
+    database password: t211lbOBt2Vyx43HtxKB
+
+* Verificar si tenemos las llaves generadas en vista de utilizar ssh support
+    ls -al ~/.ssh
+    ssh-keygen -t rsa -b 4096 -C "cmpleitez.sv@gmail.com"
+    clip < id_rsa.pub
+    "Pegar en el campo your profile / ssh keys / public key"
+    ssh -v forge@147.182.170.173 -> (se puede usar el parametro -v para depurar algun error del proceso)
+
+* Crear API Token digital ocean (  ENLACE AUTORIZADO FORGE-DIGITAL OCEAN )
+    nombre de la webapp: binder
+    token: ca4c0598dd2fa8a391b96ad6f4346275a4e685cdf836d8c2d3662bc2ce6cc3ce
+
+*  Instalar el php 7.2 ( NORMALIZAR VERSIONES DE LAS HERRAMIENTAS DE ENTORNO )
+    server/binder/php
+
+*  Correr comando de creación de la base de datos desde el frontend de la web forge
+    php artisan migrate:refresh --seed --force
+
+* Acceso a base de datos en la nube via IDE tableplus
+
+* Forge server provisioned:
+
+    SSH conection:
+        ssh forge@143.244.173.73
+
+    Url database conection:
+        mysql+ssh://forge@143.244.173.73/forge@127.0.0.1/public?name=bindersv.com&usePrivateKey=true
+
+    Database conection:
+        Name: bindersv.com
+        IP Address: 143.244.173.73
+        Private IP Address: 10.116.16.2
+        SSH Port: 22
+        Username: forge
+        Sudo Password: qTh4NUm1a4pWKLl5Sg8K
+        Database Username: forge
+        Database Password: 5RshA9vWbMW7LPZSNVd6
+
+    * Borrando cache
+        php artisan config:Cache
+        generar otra llave del proyecto
+
+------------------------------------ IMPLEMENTAR BINDER EN LA NUBE AMAZON  ----------------------------------------------------------
+
+* Deploying a Laravel application to Elastic Beanstalk
+
+------------------------------------ GESTION EN PAPEL  --------------------------------------------------------------------------------------------
+
+composer require barryvdh/laravel-dompdf
+
+Seguir instrucciones en https://github.com/barryvdh/laravel-dompdf
+
+Tamaño personalizado de papel:
+En vendor/dompdf/dompdf/scr/Adapter/CPDF.php agregar: "half-folio" => [0, 0, 468.00, 612.00],
+En config/dompdf setear: "default_paper_size" => "half-folio",

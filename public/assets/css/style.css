@@ -1,0 +1,98 @@
+/*================================================================================
+	Item Name: Frest HTML Admin Template
+	Version: 1.0
+	Author: PIXINVENT
+	Author URL: http://www.themeforest.net/user/pixinvent
+================================================================================
+
+NOTE:
+------
+PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
+WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+
+html body.bg-full-screen-image {
+  background: url(../../app-assets/images/pages/auth-bg.jpg) center center;
+  background-size: auto;
+}
+
+.text-height-1 {
+  max-height: 1rem;
+  min-height: 1rem;
+}
+
+.text-height-2 {
+  max-height: 3rem;
+  min-height: 3rem;
+}
+
+.text-height-3 {
+  max-height: 3.7rem;
+  min-height: 3.7rem;
+}
+
+.card-group {
+  flex-flow: nowrap;
+  flex-direction: column;
+}
+
+.card-title {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.card-footer {
+  padding: 0;
+  margin: 0;
+  background-color: #e5edfb;
+  border: 0px solid #dfe3e7;
+  line-height: 0.5rem !important;
+}
+
+.pagination {
+  margin: 0;
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  border-radius: 0.267rem;
+}
+
+.pill-fluid-font-size {
+  font-size: 0.67rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 5px;
+}
+
+.bg-darkblue {
+  background-color: #1a233a !important;
+}
+
+.badge-circle-quantity {
+  background-color: #FDAC41;
+  font-weight: 400;
+  font-size: medium;
+  color: ghostwhite;
+}
+
+.tablero-iconos {
+  padding-left: 0.05rem;
+  padding-right: 0.05rem;
+  padding-top: 0.40rem;
+  padding-bottom: 0.40rem;
+  }
+
+.badge.badge-light-success {
+  background-color: #8de68a;
+  color: #014d00 !important;
+}
+
+.badge.badge-light-warning {
+  background-color: #ffc078;
+  color: #734303 !important;
+}
+
+.badge.badge-light-primary {
+  background-color: #cce4fb;
+  color: #0048d2 !important;
+}
+
