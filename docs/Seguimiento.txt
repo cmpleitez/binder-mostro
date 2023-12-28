@@ -4,12 +4,11 @@
 	...🟠 Funcionalidad para cambiar manualmente las unidades en items de una oferta
 	👌 🟠 Cuadre de descarga para productos: Se compraron dos ofertas y el producto respectivo fue afectado 2 unidades en su inventario
 	👌 🟠 Cuadre de descarga para ofertas : Los items incluidos en la oferta fueron afectados por la disminución de sus inventarios
-
-	...🟠 Bipartición de binder a binder-mostro
+	👌🟠 Bipartición de binder a binder-mostro
 	
-	🟠 Pruebas de implementación en ambiente productivo virtual
+	...🟠 Pruebas alfa
 
-👌- SALA DE VENTAS: ©K
+- SALA DE VENTAS: ©K
 
 - FACTURACIÓN: ©K
 
@@ -79,7 +78,8 @@ MODALIDAD PRODUCTOS: En ésta modalidad la tarea-estado puede asignarse una a un
 TAREA-ESTADO: es el nombre de la tarea gramaticalmente en tiempo pasado para que pueda tener ese doble uso, todo ésto para que cuando se lea desde el monitor de actividades pueda verse como un estado resuelto, ésto último es para efectos de cierre de rango por la derecha de la acción, pues hay tres tiempos que podría volver complejo el proceso: inicio, progreso, demora: con ésto de compacta esa complejidad.
 
 
-IMPLMENTACIÓN:
-1. Registrar administrador de Binder-Mostro y asignarle todos los roles menos "Vendedor"
-2. Registrar el operador "Vendedor" y asignarle el role "Vendedor"
-3. Asignar los servicios de mano de obra al rol "Ensamblador"
+IMPLEMENTACIÓN:
+1. Configurar archivo de conexion .enviar
+2. Limpiar caché
+3. Registrar administrador de Binder-Mostro y asignarle todos los roles menos "Vendedor"
+4. Asignar los servicios de mano de obra al rol "Ensamblador"
