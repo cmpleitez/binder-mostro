@@ -96,3 +96,7 @@ html body.bg-full-screen-image {
   color: #0048d2 !important;
 }
 
+.table th, .table td {
+  padding: 0.3rem 0.3rem !important;
+  font-size: 0.95rem !important;
+}

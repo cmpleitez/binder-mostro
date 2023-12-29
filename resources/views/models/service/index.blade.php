@@ -1,42 +1,34 @@
 @extends('forestLayout')
 @section('content')
 <div class="card shadow-sm">
-    <div class="card-header badge-circle-light-primary">
-        <div class="card-group float-left col-md-6">
-            <div class="row">
-                <div class="col-md-1 mr-1">{!! createServiceControl() !!}</div>
-                <div class="col-md-10">PRODUCTOS / SERVICIOS</div>
-            </div>
+    <div class="card-header badge-circle-light-primary" style="padding:15px">
+        <div class="card-group float-left col-md-2 col-2" style="padding:0;">
+            {!! createServiceControl() !!}
         </div>
-        <div class="card-group float-right col-md-6">
+        <div class="card-group float-right col-md-10 col-10" style="padding:0;">
             @include('models/slices/service_search')
         </div>
     </div>
     <div class="card-content">
-        <div class="card-body">
-            <div class="row p-1">
-            </div>
-        </div>
-
         <!-- table hover -->
         <div class="table-responsive">
             <table class="table table-hover mb-0">
                 <thead>
                     <tr>
-                        <th class="text-center">@lang('ID')</th>
-                        <th>@lang('SERVICE')</th>
-                        <th>@lang('TYPE')</th>
-                        <th class="text-center">TABLERO</th>
+                        <th class="col-1 text-center">@lang('ID')</th>
+                        <th class="col-7">@lang('SERVICE')</th>
+                        <th class="col-2">@lang('TYPE')</th>
+                        <th class="col-2 text-center">TABLERO</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($services as $service)
                         <tr>
-                            <td class="text-center">{{$service->id}}</td>
-                            <td style="max-width: 300px">{{$service->service}}</td>
-                            <td>{{$service->service_type->type}}</td>
-                            <td>
-                                <div class="row d-flex justify-content-center">{!! serviceControlPanel($service) !!}</div>
+                            <td class="col-1 text-center">{{$service->id}}</td>
+                            <td class="col-7">{{$service->service}}</td>
+                            <td class="col-2">{{$service->service_type->type}}</td>
+                            <td class="col-2 d-flex align-items-sm-stretch">
+                                {!! serviceControlPanel($service) !!}
                             </td>
                         </tr>
                     @endforeach

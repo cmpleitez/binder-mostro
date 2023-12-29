@@ -58,19 +58,19 @@
     <div class="header-navbar-shadow"></div>
     <nav class="header-navbar main-header-navbar navbar-expand-lg navbar navbar-with-menu fixed-top bg-darkblue">
         <div class="navbar-wrapper">
-            <div class="navbar-container content">
-                <div class="navbar-collapse" id="navbar-mobile">
+            <div class="navbar-container content" style="padding:0.7rem 0.7rem">
+                <div class="navbar-collapse d-flex justify-content-end" id="navbar-mobile">
                     <div class="mr-auto float-left bookmark-wrapper d-flex align-items-center">
                         <ul class="nav navbar-nav">
                             <li class="nav-item mobile-menu d-xl-none mr-auto">
-                                <a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#">
+                                <a class="nav-link nav-menu-main menu-toggle hidden-xs" style="padding-left: 0; padding-right:0" href="#">
                                     <i class="ficon bx bx-menu"></i>
                                 </a>
                             </li>
                             @if (Auth::guest())
                             @else
                                 <li class="nav-item my-auto">
-                                    <a class="nav-link" href="{{route('cart.offers', auth()->user()->id)}}" data-toggle="tooltip" data-placement="top" title="Catálogo de ofertas">
+                                    <a class="nav-link" href="{{route('cart.products', auth()->user()->id)}}" data-toggle="tooltip" data-placement="top" title="Catálogo de productos">
                                         <div class="livicon-evo" data-options=" name: home.svg; style: solid; size: 2.8rem; solidColor: #ffc13a; solidColorAction: #dff30c; colorsOnHover: custom; keepStrokeWidthOnResize: true "></div>
                                     </a>
                                 </li>
@@ -84,10 +84,10 @@
                             @yield('cliente')
                             @yield('total')
                         </ul>
-                        <ul class="nav navbar-nav float-right">
+                        <ul class="nav navbar-nav float-right p-0">
                             <li class="nav-item my-auto">@yield('orden')</li>
                             <li class="dropdown dropdown-user nav-item my-auto">
-                                <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+                                <a class="dropdown-toggle nav-link dropdown-user-link" style="padding:0" href="#" data-toggle="dropdown">
                                     <div class="user-nav d-sm-flex d-none">
                                         <span class="user-name" style="color:rgb(240,240,240) !important;">{{auth()->user()->name}}</span>
                                         <span class="user-status text-muted" style="color:rgb(220,220,220) !important;">
@@ -204,10 +204,10 @@
     <!-- END: Content-->
 
     <!-- BEGIN: Footer-->
-    <footer class="footer footer-static footer-light">
+    <footer class="footer footer-static footer-light font-size-small">
         <p class="clearfix mb-0">
             <div class="float-left ">Binder, El Salvador, 2023</div>
-            <div class="float-right ">Desarrollado<i class="bx bx-hive mx-50 font-small-4"></i>por<a  href="#" target="_blank">Carlos Pleitez, cmpleitez.sv@gmail.com</a></div>
+            <div class="float-right ">Desarrollado<i class="bx bx-hive mx-20 font-small-4"></i>por<a href="#" target="_blank">cmpleitez.sv@gmail.com</a></div>
             <!--begin: WhatsApp Chat-->
             <div class="widget-chat-demo">
                 @if (Auth::guest())

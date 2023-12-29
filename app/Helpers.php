@@ -183,7 +183,7 @@ function taskControlPanel($service_id, $task, $requisition_user_quantity) {
 function createUserControl() {
     $service_code = "";
     if (authorizationService(5)) {
-        $service_code .= "<a href='/user/create'><i class='badge-circle badge-circle-primary badge-circle-md bx bxs-plus-circle font-medium-5'></i></a>";
+        $service_code .= "<a href='/user/create'><i class='badge-circle badge-circle-primary badge-circle-md bx bxs-plus-circle font-medium-5 text-center'></i></a>";
     }
     return $service_code;
 }
@@ -193,9 +193,7 @@ function userControlPanel($user) {
     if (authorizationService(33)) {
         $service_code .= "
             <a href='/cart/offers/".$user->id."'>
-                <div class='tablero-iconos'>
-                    <i class='badge-circle badge-circle-light-primary badge-circle-lg bx bxs-cart font-large-1'></i>
-                </div>
+                <i class='badge-circle badge-circle-light-primary badge-circle-lg bx bxs-cart font-large-1'></i>
             </a>
         ";
     }
@@ -298,9 +296,11 @@ function offerControlPanel($offer) {
     $service_code = "";
     if (authorizationService(17)) {
         $service_code .= "
-        <div class='tablero-iconos'>
-            <a href='/offer/edit/".$offer->id."'><i class='badge-circle badge-circle-light-danger badge-circle-lg bx bxs-edit-alt font-large-1'></i></a>
-        </div>
+            <a href='/offer/edit/".$offer->id."'>
+                <div class='tablero-iconos'>
+                    <i class='badge-circle badge-circle-light-danger badge-circle-lg bx bxs-edit-alt font-large-1'></i>
+                </div>
+            </a>
         ";
     }
     if (authorizationService(18)) {
@@ -343,9 +343,11 @@ function serviceControlPanel($service) {
     $service_code = "";
     if (authorizationService(26)) {
         $service_code .= "
-        <div class='tablero-iconos'>
-            <a href='/service/edit/".$service->id."'><i class='badge-circle badge-circle-light-warning badge-circle-lg bx bxs-edit-alt font-large-1'></i></a>
-        </div>
+            <a href='/service/edit/".$service->id."'>
+                <div class='tablero-iconos'>
+                    <i class='badge-circle badge-circle-light-warning badge-circle-lg bx bxs-edit-alt font-large-1'></i>
+                </div>
+            </a>
         ";
     }
     if (authorizationService(27)) {

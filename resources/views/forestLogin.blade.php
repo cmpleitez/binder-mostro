@@ -50,7 +50,7 @@
             <div class="content-body">
                 <!-- login page start -->
                 <section id="auth-login" class="row flexbox-container">
-                    <div class="col-xl-8 col-11">
+                    <div class="col-xl-6 col-11 mt-3 mb-3">
                         <div class="card shadow">
                             <div class="row match-height">
                                 <!-- left section-login -->
@@ -58,7 +58,7 @@
                                     <div class="card disable-rounded-right mb-0 p-2 h-100 d-flex justify-content-center ">
                                         <div class="card-header pb-1">
                                             <div class="card-title">
-                                                <h4 class="text-center mb-2">Binder</h4>
+                                                <h4 class="text-center mb-2">Binder-Mostro</h4>
                                             </div>
                                         </div>
                                         <div class="card-content">

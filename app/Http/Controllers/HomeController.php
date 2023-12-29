@@ -71,7 +71,7 @@ class HomeController extends Controller
                 return redirect()->route('task', auth()->user()->id);
             }
             toastr()->info("Catálogo de Ofertas");
-            return redirect()->route('cart.offers', auth()->user()->id);
+            return redirect()->route('cart.products', auth()->user()->id);
         } else {
             toastr()->info("El portal de compras para el público en general aún no está disponible");
             return redirect()->back();
