@@ -15,19 +15,19 @@
             <table class="table table-hover mb-0">
                 <thead>
                     <tr>
-                        <th class="col-1 text-center">@lang('ID')</th>
-                        <th class="col-7">@lang('SERVICE')</th>
-                        <th class="col-2">@lang('TYPE')</th>
-                        <th class="col-2 text-center">TABLERO</th>
+                        <th class="text-center">@lang('ID')</th>                    
+                        <th>@lang('SERVICE')</th>
+                        <th>@lang('TYPE')</th>
+                        <th class="text-center">TABLERO</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($services as $service)
                         <tr>
-                            <td class="col-1 text-center">{{$service->id}}</td>
-                            <td class="col-7">{{$service->service}}</td>
-                            <td class="col-2">{{$service->service_type->type}}</td>
-                            <td class="col-2 d-flex align-items-sm-stretch">
+                            <td class="text-center">{{$service->id}}</td>
+                            <td>{{$service->service}}</td>
+                            <td>{{$service->service_type->type}}</td>
+                            <td class="table-panel">
                                 {!! serviceControlPanel($service) !!}
                             </td>
                         </tr>

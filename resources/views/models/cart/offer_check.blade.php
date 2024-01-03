@@ -34,9 +34,9 @@
                                             <div class="col-12 text-left"
                                                 style="background-color: #ff960c42; padding-left:4%; font-size:0.70rem">
                                                 @if ($item->updated_at !== null)
-                                                    <p class="text-left text-truncate">ITEM-ID: {{$item->id}}, {{$item->updated_at->diffForHumans()}}</p>
+                                                    <p class="text-left text-truncate">ITEM # {{$item->id}}, {{$item->updated_at->diffForHumans()}}</p>
                                                 @else
-                                                    <p class="text-left text-truncate">ITEM-ID: {{$item->id}}</p>
+                                                    <p class="text-left text-truncate">ITEM # {{$item->id}}</p>
                                                 @endif
                                             </div>
 
@@ -48,7 +48,7 @@
                                                 </p>
 
                                                 <!-- Producto -->
-                                                <p class="card-text text-truncate">
+                                                <p class="card-text text-height-3">
                                                     {{$item->service->service}}
                                                 </p>
 

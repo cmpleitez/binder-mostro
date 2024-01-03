@@ -1,18 +1,19 @@
  AJUSTES --------------------------------------------------------------------------
 
 - PLATAFORMA: ©K
-	...🟠 Funcionalidad para cambiar manualmente las unidades en items de una oferta
 	👌🟠 Cuadre de descarga para productos: Se compraron dos ofertas y el producto respectivo fue afectado 2 unidades en su inventario
 	👌🟠 Cuadre de descarga para ofertas : Los items incluidos en la oferta fueron afectados por la disminución de sus inventarios
 	👌🟠 Bipartición de binder a binder-mostro
 	👌🟠 Investigar una mejor forma de desplgar webapps desde laragon 
-		
-	...🟠 Arreglar maquetación para celulares medianos gama media
-		... estandarizar una clase css para el tablero
-		... re-maquetar todos los catalogos
+	👌🟠 Arreglar maquetación para celulares medianos gama media
+	👌🟠 Pruebas alfa
+	👌🟠 maqueacion de vista seleccion del cliente
+	👌🟠 agregar titulos en los catalogos
+	
+	...🟠 automatizar el reporte detalle de ventas (precio según tipo de orden: oferta o producto regular )
+	
+	🟠 implementar a nivel general el "control de retorno"
 
-	🟠 Pruebas alfa
-	🟠 maqueacion de vista seleccion del cliente
 
 - SALA DE VENTAS: ©K
 

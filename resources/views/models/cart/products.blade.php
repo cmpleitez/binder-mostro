@@ -54,7 +54,7 @@
                                                     style="background-color: #ff960c42; padding-left:4%; font-size:0.70rem">
                                                     @if ($service->updated_at !== null)
                                                         <p class="text-left text-truncate">
-                                                            ITEM-ID: {{ $service->id }}
+                                                            PRODUCTO # {{ $service->id }}
                                                             {{ $service->updated_at->diffForHumans() }}
                                                         </p>
                                                     @else
@@ -70,7 +70,7 @@
                                                     </p>
 
                                                     <!-- Producto -->
-                                                    <p class="card-text text-truncate">
+                                                    <p class="card-text text-height-3">
                                                         {{ $service->service }}
                                                     </p>
 

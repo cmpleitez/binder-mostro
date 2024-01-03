@@ -101,8 +101,10 @@
                                 </div>
                             </div>
                             <!-- footer section -->
-                            <div class="col-12 card-footer text-height-3 text-right">
-                                <div>Prototipo base 06.00</div>
+                            <div class="col-12 card-footer text-right">
+                                <div class="font-small-2">Prototipo base versión @php
+                                    echo date('Y').'.'.date('m').'.001';
+                                @endphp</div>
                             </div>
                         </div>
                     </div>

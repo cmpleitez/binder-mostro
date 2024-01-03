@@ -37,40 +37,40 @@ class HomeController extends Controller
             $query->where('user_id',auth()->user()->id);
         })->where('invoiced', false)->count();
         if (isset($role->id)) {
-            if ($role->id==1) { //Ventas
-                if ($pending_requisitions>0) {
-                    return redirect()->route('task', auth()->user()->id);
-                }
-            } elseif($role->id==2) { //Cajero
-                if ($pending_invoices>0) {
-                    return redirect()->route('sale');
-                }
-            } elseif($role->id==3) { //Diseñador
-                if ($pending_requisitions>0) {
-                    return redirect()->route('task', auth()->user()->id);
-                }
-            } elseif($role->id==4) { //Ensamblador
-                if ($pending_requisitions>0) {
-                    return redirect()->route('task', auth()->user()->id);
-                }
-            } elseif($role->id==5) { //Gestor de calidad
-                if ($pending_requisitions>0) {
-                    return redirect()->route('task', auth()->user()->id);
-                }
-            } elseif($role->id==6) { //Bodeguero
-                if ($pending_requisitions>0) {
-                    return redirect()->route('task', auth()->user()->id);
-                }
-            } elseif($role->id==7) { //Motorista
-                if ($pending_requisitions>0) {
-                    return redirect()->route('task', auth()->user()->id);
-                }
-            } elseif($role->id==8) { //Administrador
-                return redirect()->route('user');
-            } elseif($role->id==9) { //Supervisor
-                return redirect()->route('task', auth()->user()->id);
-            }
-            toastr()->info("Catálogo de Ofertas");
+            // if ($role->id==1) { //Ventas
+            //     if ($pending_requisitions>0) {
+            //         return redirect()->route('task', auth()->user()->id);
+            //     }
+            // } elseif($role->id==2) { //Cajero
+            //     if ($pending_invoices>0) {
+            //         return redirect()->route('sale');
+            //     }
+            // } elseif($role->id==3) { //Diseñador
+            //     if ($pending_requisitions>0) {
+            //         return redirect()->route('task', auth()->user()->id);
+            //     }
+            // } elseif($role->id==4) { //Ensamblador
+            //     if ($pending_requisitions>0) {
+            //         return redirect()->route('task', auth()->user()->id);
+            //     }
+            // } elseif($role->id==5) { //Gestor de calidad
+            //     if ($pending_requisitions>0) {
+            //         return redirect()->route('task', auth()->user()->id);
+            //     }
+            // } elseif($role->id==6) { //Bodeguero
+            //     if ($pending_requisitions>0) {
+            //         return redirect()->route('task', auth()->user()->id);
+            //     }
+            // } elseif($role->id==7) { //Motorista
+            //     if ($pending_requisitions>0) {
+            //         return redirect()->route('task', auth()->user()->id);
+            //     }
+            // } elseif($role->id==8) { //Administrador
+            //     return redirect()->route('user');
+            // } elseif($role->id==9) { //Supervisor
+            //     return redirect()->route('task', auth()->user()->id);
+            // }
+            toastr()->info("Catálogo de Productos");
             return redirect()->route('cart.products', auth()->user()->id);
         } else {
             toastr()->info("El portal de compras para el público en general aún no está disponible");

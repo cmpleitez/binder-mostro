@@ -15,18 +15,18 @@
                 <thead>
                     <tr>
                         <th class="text-center col-1">@lang('ID')</th>
-                        <th class="col-6">@lang('OFFER')</th>
-                        <th class="col-2">@lang('CHARGE')</th>
-                        <th class="col-3 text-center">TABLERO</th>
+                        <th >@lang('OFFER')</th>
+                        <th >@lang('CHARGE')</th>
+                        <th class="text-center">TABLERO</th>
                     </tr>
                 </thead>
                 <tbody>
                 	@foreach($offers as $offer)
                         <tr>
-                            <td class="col-1 text-center">{{$offer->id}}</td>
-                            <td class="col-6">{{$offer->offer}}</td>
-                            <td class="col-2">{{ localMoneyFormat($offer->charge) }}</td>
-                            <td class="col-3 d-flex align-items-sm-stretch">
+                            <td class="text-center">{{$offer->id}}</td>
+                            <td >{{$offer->offer}}</td>
+                            <td >{{ localMoneyFormat($offer->charge) }}</td>
+                            <td class="table-panel">
                                 {!! offerControlPanel($offer) !!}
                             </td>
                         </tr>

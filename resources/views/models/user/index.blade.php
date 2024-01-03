@@ -10,7 +10,9 @@
                 <div class="card-group float-right col-md-10 col-10" style="padding:0;">
                     <form method="GET" action="{{ Route('user.search') }}">
                         <div class="input-group">
-                            <input type="text" class="form-control rounded-right form-control-md autocomplete" id="basicInput" placeholder="@lang('Look for, wrriten the names')" name="search" value="{{request()->input('search')}}">
+                            <input type="text" class="form-control rounded-right form-control-md autocomplete"
+                                id="basicInput" placeholder="@lang('Look for, wrriten the names')" name="search"
+                                value="{{ request()->input('search') }}">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="submit">
                                     <i class="bx bx-search"></i>
@@ -25,25 +27,25 @@
                     <table class="table table-hover mb-0">
                         <thead>
                             <tr>
-                                <th class="col-1 text-center">@lang('DUI')</th>
-                                <th class="col-3">@lang('NAME')</th>
-                                <th class="col-2 text-left">@lang('EMAIL')</th>
-                                <th class="col-1 text-center">@lang('PHONE NUMBER')</th>
-                                <th class="col-1 text-center">@lang('NIT')</th>
-                                <th class="col-1 text-center">@lang('NRC')</th>
-                                <th class="col-3 text-center">@lang('TABLERO')</th>
+                                <th class="text-center">@lang('DUI')</th>
+                                <th class="">@lang('NAME')</th>
+                                <th class="text-left">@lang('EMAIL')</th>
+                                <th class="text-center">@lang('PHONE NUMBER')</th>
+                                <th class="text-center">@lang('NIT')</th>
+                                <th class="text-center">@lang('NRC')</th>
+                                <th class="text-center">@lang('TABLERO')</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($users as $user)
+                            @foreach ($users as $user)
                                 <tr>
-                                    <td class="col-1 text-center">{{$user->dui}}</td>
-                                    <td class="col-3">{{$user->name}}</td>
-                                    <td class="col-2 text-left">{{$user->email}}</td>
-                                    <td class="col-1 text-center">{{$user->phone_number}}</td>
-                                    <td class="col-1 text-center">{{$user->nit}}</td>
-                                    <td class="col-1 text-center">{{$user->nrc}}</td>
-                                    <td class="col-3 align-items-sm-center">
+                                    <td class="text-center">{{ $user->dui }}</td>
+                                    <td class="text-left">{{ $user->name }}</td>
+                                    <td class="text-left">{{ $user->email }}</td>
+                                    <td class="text-center">{{ $user->phone_number }}</td>
+                                    <td class="text-center">{{ $user->nit }}</td>
+                                    <td class="text-center">{{ $user->nrc }}</td>
+                                    <td class="table-panel">
                                         {!! userControlPanel($user) !!}
                                     </td>
                                 </tr>
@@ -53,7 +55,7 @@
                 </div>
             </div>
             <div class="card-footer">
-                <div class="">
+                <div class="table-panel d-flex justify-content-between">
                     {{ $users->appends(request()->input())->links() }}
                 </div>
             </div>

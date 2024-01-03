@@ -183,7 +183,7 @@ function taskControlPanel($service_id, $task, $requisition_user_quantity) {
 function createUserControl() {
     $service_code = "";
     if (authorizationService(5)) {
-        $service_code .= "<a href='/user/create'><i class='badge-circle badge-circle-primary badge-circle-md bx bxs-plus-circle font-medium-5 text-center'></i></a>";
+        $service_code .= "<a href='/user/create'><i class='badge-circle badge-circle-primary bx bxs-plus-circle font-medium-5 text-center'></i></a>";
     }
     return $service_code;
 }
@@ -192,53 +192,44 @@ function userControlPanel($user) {
     $service_code = "";
     if (authorizationService(33)) {
         $service_code .= "
-            <a href='/cart/offers/".$user->id."'>
-                <i class='badge-circle badge-circle-light-primary badge-circle-lg bx bxs-cart font-large-1'></i>
+            <a href='/cart/offers/".$user->id."' style='margin:2px'>
+                <i class='badge-circle badge-circle-light-primary bx bxs-cart'></i>
             </a>
         ";
     }
+    
     if (authorizationService(31)) {
         $service_code .= "
-            <a href='/task/its/".$user->id."'>
-                <div class='tablero-iconos'>
-                    <i class='badge-circle badge-circle-light-primary badge-circle-lg bx bx-task font-large-1'></i>
-                </div>
+            <a href='/task/its/".$user->id."' style='margin:2px'>
+                <i class='badge-circle badge-circle-light-primary bx bx-task'></i>
             </a>
         ";
     }
     if (authorizationService(8)) {
         $service_code .= "
-        <a href='/user/bind/".$user->id."'>
-            <div class='tablero-iconos'>
-                <i class='badge-circle badge-circle-light-primary badge-circle-lg bx bxs-briefcase-alt-2 font-large-1'></i>
-            </div>
-        </a>
+            <a href='/user/bind/".$user->id."' style='margin:2px'>
+                <i class='badge-circle badge-circle-light-primary bx bxs-briefcase-alt-2'></i>
+            </a>
         ";
     }
     if (authorizationService(6)) {
         $service_code .= "
-                <a href='/user/edit/".$user->id."'>
-                    <div class='tablero-iconos'>
-                        <i class='badge-circle badge-circle-light-warning badge-circle-lg bx bxs-edit-alt font-large-1'></i>
-                    </div>
-                </a>
+            <a href='/user/edit/".$user->id."' style='margin:2px'>
+                <i class='badge-circle badge-circle-light-warning bx bxs-edit-alt'></i>
+            </a>
         ";
     }
     if (authorizationService(7)) {
         if($user->active) {
             $service_code .= "
-                <a href='/user/undo/".$user->id."'>
-                    <div class='tablero-iconos'>
-                        <i class='badge-circle badge-circle-light-primary badge-circle-lg bx bx-check font-large-1'></i>
-                    </div>
+                <a href='/user/undo/".$user->id."' style='margin:2px'>
+                    <i class='badge-circle badge-circle-light-primary bx bx-check'></i>
                 </a>
             ";
         } else {
             $service_code .= "
-                <a href='/user/undo/".$user->id."'>
-                    <div class='tablero-iconos'>
-                        <i class='badge-circle badge-circle-light-danger badge-circle-lg bx bx-x font-large-1'></i>
-                    </div>
+                <a href='/user/undo/".$user->id."' style='margin:2px'>
+                    <i class='badge-circle badge-circle-light-danger bx bx-x'></i>
                 </a>
             ";
         }
@@ -258,27 +249,20 @@ function roleControlPanel($role) {
     $service_code = "";
     if (authorizationService(13)) {
         $service_code .= "
-        <div class='tablero-iconos'>
-            <a href='/role/bind/".$role->id."'><i class='badge-circle badge-circle-light-primary badge-circle-lg bx bxs-briefcase-alt-2 font-large-1'></i></a>
-        </div>
+            <a href='/role/bind/".$role->id."' style='margin: 2px'><i class='badge-circle badge-circle-light-primary bx bxs-briefcase-alt-2'></i></a>
         ";
     }
     if (authorizationService(14)) {
         if ($role->active==true) {
             $service_code .= "
-            <div class='tablero-iconos'>
-                <a href='/role/undo/".$role->id."'><i class='badge-circle badge-circle-light-primary badge-circle-lg bx bx-check font-large-1'></i></a>
-            </div>
+                <a href='/role/undo/".$role->id."' style='margin: 2px'><i class='badge-circle badge-circle-light-primary bx bx-check'></i></a>
             ";
         } else {
             $service_code .= "
-            <div class='tablero-iconos'>
-                <a href='/role/undo/".$role->id."'><i class='badge-circle badge-circle-light-warning badge-circle-lg bx bx-x font-large-1'></i></a>
-            </div>
+                <a href='/role/undo/".$role->id."' style='margin: 2px'><i class='badge-circle badge-circle-light-warning bx bx-x'></i></a>
             ";
         }
     }
-    $service_code .= "<div>";
     return $service_code;
 }
 
@@ -296,32 +280,24 @@ function offerControlPanel($offer) {
     $service_code = "";
     if (authorizationService(17)) {
         $service_code .= "
-            <a href='/offer/edit/".$offer->id."'>
-                <div class='tablero-iconos'>
-                    <i class='badge-circle badge-circle-light-danger badge-circle-lg bx bxs-edit-alt font-large-1'></i>
-                </div>
+            <a href='/offer/edit/".$offer->id."' style='margin: 2px;'>
+                <i class='badge-circle badge-circle-light-danger bx bxs-edit-alt'></i>
             </a>
         ";
     }
     if (authorizationService(18)) {
         $service_code .= "
-        <div class='tablero-iconos'>
-            <a href='/offer/bind/".$offer->id."'><i class='badge-circle badge-circle-light-primary badge-circle-lg bx bxs-gift font-large-1'></i></a>
-        </div>
+            <a href='/offer/bind/".$offer->id."' style='margin: 2px;'><i class='badge-circle badge-circle-light-primary bx bxs-gift'></i></a>
         ";
     }
     if (authorizationService(19)) {
         if ($offer->active) {
             $service_code .= "
-            <div class='tablero-iconos'>
-                <a href='/offer/undo/".$offer->id."'><i class='badge-circle badge-circle-light-primary badge-circle-lg bx bx-check font-large-1'></i></a>
-            </div>
+                <a href='/offer/undo/".$offer->id."' style='margin: 2px;'><i class='badge-circle badge-circle-light-primary bx bx-check'></i></a>
             ";
         } else {
             $service_code .= "
-            <div class='tablero-iconos'>
-                <a href='/offer/undo/".$offer->id."'><i class='badge-circle badge-circle-light-warning badge-circle-lg bx bx-x font-large-1'></i></a>
-            </div>
+                <a href='/offer/undo/".$offer->id."' style='margin: 2px;'><i class='badge-circle badge-circle-light-warning bx bx-x'></i></a>
             ";
         }
     }
@@ -344,24 +320,18 @@ function serviceControlPanel($service) {
     if (authorizationService(26)) {
         $service_code .= "
             <a href='/service/edit/".$service->id."'>
-                <div class='tablero-iconos'>
-                    <i class='badge-circle badge-circle-light-warning badge-circle-lg bx bxs-edit-alt font-large-1'></i>
-                </div>
+                <i class='badge-circle badge-circle-light-warning bx bxs-edit-alt'></i>
             </a>
         ";
     }
     if (authorizationService(27)) {
         if ($service->active) {
             $service_code .= "
-            <div class='tablero-iconos'>
-                <a href='/service/undo/".$service->id."'><i class='badge-circle badge-circle-light-primary badge-circle-lg bx bx-check font-large-1'></i></a>
-            </div>
+                <a href='/service/undo/".$service->id."' style='margin: 2px'><i class='badge-circle badge-circle-light-primary bx bx-check'></i></a>
             ";
         } else {
             $service_code .= "
-            <div class='tablero-iconos'>
-                <a href='/service/undo/".$service->id."'><i class='badge-circle badge-circle-light-warning badge-circle-lg bx bx-x font-large-1'></i></a>
-            </div>
+                <a href='/service/undo/".$service->id."' style='margin: 2px'><i class='badge-circle badge-circle-light-warning bx bx-x'></i></a>
             ";
         }
     }
@@ -385,23 +355,17 @@ function branchControlPanel( $branch_id ) {
     $service_code = "";
     if (authorizationService(22)) {
         $service_code .= '
-            <div class="tablero-iconos">
-                <a href="/branch/edit/'.$branch_id.'"><i class="badge-circle badge-circle-light-warning badge-circle-lg bx bxs-edit-alt font-large-1"></i></a>
-            </div>
+            <a href="/branch/edit/'.$branch_id.'"><i class="badge-circle badge-circle-light-warning bx bxs-edit-alt" style="margin:2px"></i></a>
         ';
     }
     if (authorizationService(23)) {
         if($branch->active == true) {
             $service_code .= '
-                <div class="tablero-iconos">
-                    <a href="/branch/undo/'.$branch_id.'"><i class="badge-circle badge-circle-light-primary badge-circle-lg bx bx-check font-large-1"></i></a>
-                </div>
+                <a href="/branch/undo/'.$branch_id.'"><i class="badge-circle badge-circle-light-primary bx bx-check" style="margin:2px"></i></a>
             ';
         } else {
             $service_code .= '
-                <div class="tablero-iconos">
-                    <a href="/branch/undo/'.$branch_id.'"><i class="badge-circle badge-circle-light-warning badge-circle-lg bx bx-x font-large-1"></i></a>
-                </div>
+                <a href="/branch/undo/'.$branch_id.'"><i class="badge-circle badge-circle-light-warning bx bx-x" style="margin:2px"></i></a>
             ';
         }
     }
@@ -469,23 +433,17 @@ function paymentTypeControlPanel($payment_type) {
     $service_code = '';
     if (authorizationService(54)) {
         $service_code .= '
-            <div class="tablero-iconos">
-                <a href="/payment-type/edit/'.$payment_type->id.'"><i class="badge-circle badge-circle-light-warning badge-circle-lg bx bxs-edit-alt font-large-1"></i></a>
-            </div>
+            <a href="/payment-type/edit/'.$payment_type->id.'" style="margin: 2px;"><i class="badge-circle badge-circle-light-warning bx bxs-edit-alt"></i></a>
         ';
     }
     if (authorizationService(23)) {
         if($payment_type->active == true) {
             $service_code .= '
-                <div class="tablero-iconos">
-                    <a href="/payment-type/undo/'.$payment_type->id.'"><i class="badge-circle badge-circle-light-primary badge-circle-lg bx bx-check font-large-1"></i></a>
-                </div>
+                <a href="/payment-type/undo/'.$payment_type->id.'" style="margin: 2px;"><i class="badge-circle badge-circle-light-primary bx bx-check"></i></a>
             ';
         } else {
             $service_code .= '
-                <div class="tablero-iconos">
-                    <a href="/payment-type/undo/'.$payment_type->id.'"><i class="badge-circle badge-circle-light-warning badge-circle-lg bx bx-x font-large-1"></i></a>
-                </div>
+                <a href="/payment-type/undo/'.$payment_type->id.'" style="margin: 2px;"><i class="badge-circle badge-circle-light-warning bx bx-x"></i></a>
             ';
         }
     }

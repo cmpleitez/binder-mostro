@@ -74,13 +74,6 @@ html body.bg-full-screen-image {
   color: ghostwhite;
 }
 
-.tablero-iconos {
-  padding-left: 0.05rem;
-  padding-right: 0.05rem;
-  padding-top: 0.40rem;
-  padding-bottom: 0.40rem;
-  }
-
 .badge.badge-light-success {
   background-color: #8de68a;
   color: #014d00 !important;
@@ -97,6 +90,18 @@ html body.bg-full-screen-image {
 }
 
 .table th, .table td {
-  padding: 0.3rem 0.3rem !important;
-  font-size: 0.95rem !important;
+  padding-top: 0.6rem !important;
+  padding-bottom: 0.6rem !important;
+}
+
+.table-panel {
+  font-size: 2rem !important;
+  display: flex !important;
+  justify-content: center !important;
+  /* display: flex !important; */
+  /* flex-wrap: wrap; */
+  /* align-content: center; */
+  /* justify-content: flex-center; */
+  /* align-items: center; */
+  /* justify-content: center; */
 }

@@ -4,8 +4,8 @@
     <div class="card-header badge-circle-light-primary">
         <div class="card-group">
             <div class="row align-items-center">
-                <div class="col-md-1">{!! createBranchControl() !!}</div>
-                <div class="col-md-11 text-uppercase">@lang('Branches')</div>
+                <div class="col-2">{!! createBranchControl() !!}</div>
+                <div class="col-10 text-uppercase">@lang('Branches')</div>
             </div>
         </div>
     </div>
@@ -14,17 +14,17 @@
             <table class="table table-hover mb-0">
                 <thead>
                     <tr>
-                        <th class="col-1 text-center">@lang('ID')</th>
-                        <th class="col-9">@lang('BRANCH')</th>
-                        <th class="col-2 text-center">TABLERO</th>
+                        <th class="text-center">@lang('ID')</th>
+                        <th class="text-left">@lang('BRANCH')</th>
+                        <th class="text-center">TABLERO</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($branches as $branch)
                         <tr>
-                            <td class="col-1 text-center">{{$branch->id}}</td>
-                            <td class="col-9">{{$branch->branch}}</td>
-                            <td class="col-2 d-flex align-items-sm-stretch">{!! branchControlPanel( $branch->id ) !!}</td>
+                            <td class="text-center">{{$branch->id}}</td>
+                            <td class="text-left">{{$branch->branch}}</td>
+                            <td class="table-panel">{!! branchControlPanel( $branch->id ) !!}</td>
                         </tr>
                     @endforeach
                 </tbody>

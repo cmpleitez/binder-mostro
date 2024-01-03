@@ -3,6 +3,7 @@
     <section id="decks">
         <div class="row match-height">
             <div class="col-12">
+                <div class="font-medium-3 font-weight-bold mb-2">OFERTAS</div>
                 <div class="card-deck-wrapper">
                     <div class="card-deck">
                         <div class="row no-gutters">
@@ -30,10 +31,10 @@
                                                 <div class="col-12 text-left"
                                                     style="background-color: #ff960c42; padding-left:4%; font-size:0.70rem">
                                                     @if ($offer->updated_at !== null)
-                                                        <p class="text-left text-truncate">ORDER-ID: {{ $offer->id }},
+                                                        <p class="text-left text-truncate">OFFERTA # {{ $offer->id }},
                                                             {{ $offer->updated_at->diffForHumans() }}</p>
                                                     @else
-                                                        <p class="text-left text-truncate">ORDER-ID: {{ $offer->id }}</p>
+                                                        <p class="text-left text-truncate">OFERTA # {{ $offer->id }}</p>
                                                     @endif
                                                 </div>
 
@@ -44,8 +45,8 @@
                                                         {!! localMoneyFormat($offer->charge) !!}
                                                     </p>
 
-                                                    <!-- Producto -->
-                                                    <p class="card-text text-truncate">
+                                                    <!-- Oferta -->
+                                                    <p class="card-text text-height-3">
                                                         {{ $offer->offer }}
                                                     </p>
 

@@ -48,10 +48,10 @@
                                                 <div class="col-12 text-left"
                                                     style="background-color: #ff960c42; padding-left:4%; font-size:0.70rem">
                                                     @if ($order->updated_at !== null)
-                                                        <p class="text-left text-truncate">ORDER-ID: {{ $order->id }},
+                                                        <p class="text-left text-truncate">ORDER # {{ $order->id }},
                                                             {{ $order->updated_at->diffForHumans() }}</p>
                                                     @else
-                                                        <p class="text-left text-truncate">ORDER-ID: {{ $order->id }}</p>
+                                                        <p class="text-left text-truncate">ORDER # {{ $order->id }}</p>
                                                     @endif
                                                 </div>
 
@@ -63,7 +63,7 @@
                                                     </p>
 
                                                     <!-- Producto -->
-                                                    <p class="card-text text-truncate">
+                                                    <p class="card-text text-height-3">
                                                         {{ $order->offer }}
                                                     </p>
 

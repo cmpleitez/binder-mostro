@@ -21,10 +21,10 @@
                 <tbody>
                 	@foreach($roles as $role)
                         <tr>
-                            <td class="col-md-1 text-center">{{$role->id}}</td>
-                            <td class="col-md-8">{{$role->role}}</td>
-                            <td class="col-md-3">
-                                <div class="row d-flex justify-content-center">{!! roleControlPanel($role) !!}</div>
+                            <td class="text-center">{{$role->id}}</td>
+                            <td>{{$role->role}}</td>
+                            <td>
+                                <div class="table-panel">{!! roleControlPanel($role) !!}</div>
                             </td>
                         </tr>
                 	@endforeach
