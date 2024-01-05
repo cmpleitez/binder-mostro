@@ -59,6 +59,18 @@ class Seeds extends Seeder
             'autoservicio'      => 0,
             'email_verified_at' => now(),
         ]);
+
+        DB::table('users')->insert([
+            'id'                => 2,
+            'branch_id'         => 1,
+            'area_id'           => 1,
+            'name'              => 'Criss Angel',
+            'email'             => 'cangel@gmail.com',
+            'password'          => bcrypt('123456'),
+            'remember_token'    => Str::random(10),
+            'autoservicio'      => 0,
+            'email_verified_at' => now(),
+        ]);
         DB::unprepared('SET IDENTITY_INSERT users OFF');
 
         //OPTIONS
