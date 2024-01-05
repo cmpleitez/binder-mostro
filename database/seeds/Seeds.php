@@ -54,19 +54,7 @@ class Seeds extends Seeder
             'area_id'           => 6,
             'name'              => 'system',
             'email'             => 'system@gmail.com',
-            'password'          => bcrypt('123456'),
-            'remember_token'    => Str::random(10),
-            'autoservicio'      => 0,
-            'email_verified_at' => now(),
-        ]);
-
-        DB::table('users')->insert([
-            'id'                => 2,
-            'branch_id'         => 1,
-            'area_id'           => 1,
-            'name'              => 'Criss Angel',
-            'email'             => 'cangel@gmail.com',
-            'password'          => bcrypt('123456'),
+            'password'          => bcrypt('R3@1b1nd3r'),
             'remember_token'    => Str::random(10),
             'autoservicio'      => 0,
             'email_verified_at' => now(),
