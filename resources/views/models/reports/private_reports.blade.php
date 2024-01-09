@@ -11,29 +11,36 @@
                         <h4 class="card-title">REPORTES DE INFORMACION DETALLADA</h4>
                     </div>
                     <div class="card-content">
-                        <div class="card-body pl-0">
+                        <div class="card-body">
                             <div class="height-450">
                                 <div class="row">
-
                                   <div class="col-xl-4 col-sm-6 col-12">
-                                        <div class="card bg-primary bg-lighten-1">
+
+
+                                    <a href="{{route('automation.reporte-ventas')}}">
+
+                                        <div class="card bg-primary bg-lighten-5">
                                             <div class="card-content">
                                                 <div class="row no-gutters">
-                                                    <div
-                                                        class="col-lg-4 col-md-12 d-flex align-items-center justify-content-center p-1">
-                                                        <img src="../../../app-assets/images/elements/apple-lap.png"
-                                                            class="card-img img-fluid" alt="apple-lap.png">
-                                                    </div>
                                                     <div class="col-lg-8 col-md-12">
                                                         <div class="card-body text-center">
-                                                            <h4 class="card-title white">New Arrival</h4>
-                                                            <p class="card-text white">Mac Book.</p>
-                                                            <button class="btn btn-secondary">Buy Now</button>
+
+                                                            <div class="p-2">
+                                                                <h4 class="card-title">New Arrival</h4>
+                                                                <p class="card-text">Mac Book.</p>
+                                                            </div>
+
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+
+                                        
+                                    </a>
+
+
+
                                     </div>
 
                                 </div>

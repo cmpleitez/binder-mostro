@@ -81,4 +81,8 @@ class ReportsController extends Controller
         $data['sinrevisar']     = $sinrevisar;
         return view('models.reports.private_reports', $data);
     }
+
+    Public function ventas() {
+        return view('models.reports.ventas');
+    }
 }
