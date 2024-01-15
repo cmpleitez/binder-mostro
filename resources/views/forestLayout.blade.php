@@ -49,6 +49,14 @@
     <!-- BEGIN: Toastr -->
     <link rel="stylesheet" type="text/css" href="{{asset('css/toastr.min.css')}}">
     <!-- END: Toastr -->
+
+    @section('css')
+    @show
+
+    <!-- BEGIN: Adicionales personalizadas-->
+    
+    <!-- END: Adicionales personalizadas-->
+
 </head>
 <!-- END: Head-->
 
@@ -208,14 +216,14 @@
         <p class="clearfix mb-0">
             <div class="float-left ">Binder, El Salvador, 2023</div>
             <div class="float-right ">Desarrollado<i class="bx bx-hive mx-20 font-small-4"></i>por<a href="#" target="_blank">cmpleitez.sv@gmail.com</a></div>
-            <!--begin: WhatsApp Chat-->
+            {{-- <!--begin: WhatsApp Chat-->
             <div class="widget-chat-demo">
                 @if (Auth::guest())
                 @else
                     {!! whatsappChat() !!}
                 @endif
             </div>
-            <!--end: WhatsApp Chat-->
+            <!--end: WhatsApp Chat--> --}}
             <button class="btn btn-primary btn-icon scroll-top" type="button"><i class="bx bx-up-arrow-alt"></i></button>
         </p>
     </footer>
@@ -234,15 +242,9 @@
     <script src="{{asset('app-assets/vendors/js/forms/spinner/jquery.bootstrap-touchspin.js')}}"></script>
     <!--<script src="../../../app-assets/vendors/js/extensions/dragula.min.js"></script>-->
 
-    <script src="{{asset('app-assets/vendors/js/tables/datatable/datatables.min.js')}}"></script>
-    <script src="{{asset('app-assets/vendors/js/tables/datatable/dataTables.bootstrap4.min.js')}}"></script>
-    <script src="{{asset('app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js')}}"></script>
-    <script src="{{asset('app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js')}}"></script>
-    <script src="{{asset('app-assets/vendors/js/tables/datatable/responsive.bootstrap.min.js')}}"></script>
-
-    <script src="{{asset('app-assets/vendors/js/pickers/pickadate/picker.js')}}"></script>
-    <script src="{{asset('app-assets/vendors/js/pickers/pickadate/picker.date.js')}}"></script>
-    <script src="{{asset('app-assets/vendors/js/pickers/pickadate/picker.time.js')}}"></script>
+    {{-- <script src="{{asset('app-assets/vendors/js/pickers/pickadate/picker.js')}}"></script> --}}
+    {{-- <script src="{{asset('app-assets/vendors/js/pickers/pickadate/picker.date.js')}}"></script> --}}
+    {{-- <script src="{{asset('app-assets/vendors/js/pickers/pickadate/picker.time.js')}}"></script> --}}
     <script src="{{asset('app-assets/vendors/js/pickers/pickadate/legacy.js')}}"></script>
     <script src="{{asset('app-assets/vendors/js/pickers/daterange/moment.min.js')}}"></script>
     <script src="{{asset('app-assets/vendors/js/pickers/daterange/daterangepicker.js')}}"></script>
@@ -258,7 +260,7 @@
     <!-- BEGIN: Page JS-->
     <script src="{{asset('js/number-input.js')}}"></script>
     <script src="{{asset('app-assets/js/scripts/pages/app-invoice.js')}}"></script>
-    <script src="{{asset('app-assets/js/scripts/pickers/dateTime/pick-a-datetime.js')}}"></script>
+    {{-- <script src="{{asset('app-assets/js/scripts/pickers/dateTime/pick-a-datetime.js')}}"></script> --}}
     <script src="{{asset('app-assets/js/scripts/modal/components-modal.js')}}"></script>
     <script src="{{asset('app-assets/js/scripts/extensions/sweet-alerts.js')}}"></script>
     <!--<script src="../../../page/lib/owlcarousel/owl.carousel.js"></script>-->
@@ -275,7 +277,14 @@
     <script src="{{asset('js/imask.js')}}"></script>
     <!-- END: Adicionales personalizadas-->
 
+
+    @section('js')
+        {{-- puede incluir referencia JS de html hijo --}}
+    @show
+
+
     @yield('public_reports')
+    
 </body>
 <!-- END: Body-->
 </html>

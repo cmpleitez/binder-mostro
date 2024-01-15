@@ -199,15 +199,16 @@ class Seeds extends Seeder
         ]);
         DB::unprepared('SET IDENTITY_INSERT payment_types OFF');
 
-        //AUTORIZACIÓN
+        //SERVICIOS DE AUTORIZACIÓN
         DB::unprepared('SET IDENTITY_INSERT services ON');
         DB::table('services')->insert([ //DISPONIBLE
-            'id'        => 50,
-            'service'   => 'Disponible uno',
-            'route'                      => '#',
-            'service_type_id' => 1,
-            'cost'      => 1.999999,
-            'charge'    => 2.999999,
+            'id'                    => 50,
+            'service'               => 'Reporte de ventas',
+            'route'                 => 'automation.reporte-ventas',
+            'service_type_id'       => 1,
+            'cost'                  => 1.999999,
+            'charge'                => 2.999999,
+            'private_net'           => 1,
         ]);
         DB::table('services')->insert([
             'id'                             => 1,
@@ -1777,7 +1778,7 @@ class Seeds extends Seeder
         DB::unprepared('SET IDENTITY_INSERT offers ON');
         DB::table('offers')->insert([ //Oferta puente
             'id'                    => 1,
-            'offer'                 => 'Producto por unidad',
+            'offer'                 => 'Producto individual',
             'charge'                => 0,
         ]);
         DB::unprepared('SET IDENTITY_INSERT role_user OFF');

@@ -11,6 +11,8 @@
 	👌🟠 agregar titulos en los catalogos
 	
 	...🟠 automatizar el reporte detalle de ventas (precio según tipo de orden: oferta o producto regular )
+			... filtro por fechas
+			... si es oferta el precio por unidad es diferente de si es producto
 	
 	🟠 implementar a nivel general el "control de retorno"
 

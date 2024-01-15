@@ -18,7 +18,7 @@ Route::group(['middleware' => 'auth' ], function () {
 			Route::get('option', 'OptionController@option')->name('automation.option');
 			Route::post('offer-send/{client}/{cart}', 'MailController@store')->name('automation.offer-send');
 			Route::get('private-reports', 'ReportsController@privateReports')->name('automation.private-reports');
-			Route::get('ventas', 'ReportsController@ventas')->name('automation.reporte-ventas');
+			Route::get('reporte-ventas', 'ReportsController@reporteVentas')->name('automation.reporte-ventas');
 		});
 
 		//USER MAINTENANCE & BIND

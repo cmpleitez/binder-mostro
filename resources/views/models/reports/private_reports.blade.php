@@ -22,12 +22,12 @@
                                         <div class="card bg-primary bg-lighten-5">
                                             <div class="card-content">
                                                 <div class="row no-gutters">
-                                                    <div class="col-lg-8 col-md-12">
+                                                    <div class="col-12">
                                                         <div class="card-body text-center">
 
                                                             <div class="p-2">
-                                                                <h4 class="card-title">New Arrival</h4>
-                                                                <p class="card-text">Mac Book.</p>
+                                                                <h4 class="card-title">Reporte de Ventas</h4>
+                                                                <p class="card-text">Detalle</p>
                                                             </div>
 
                                                         </div>

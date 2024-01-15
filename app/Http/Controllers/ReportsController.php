@@ -1,10 +1,11 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Carbon\carbon;
 
 use App\requisition_user;
 use App\requisition;
-use Carbon\carbon;
+use App\cart;
 
 class ReportsController extends Controller
 {
@@ -82,7 +83,14 @@ class ReportsController extends Controller
         return view('models.reports.private_reports', $data);
     }
 
-    Public function ventas() {
-        return view('models.reports.ventas');
+    Public function reporteVentas() {
+        $data['ventas'] = requisition::where('active', true)->whereHas('cart', function($query){
+            $query->where('purchased', true);
+        })->with('cart')->with('offer')->with('service')->get();
+
+        $data['total'] = requisition::where('active', true)->whereHas('cart', function($query){
+            $query->where('purchased', true);
+        })->sum('requisition_amount');
+        return view('models.reports.ventas', $data);
     }
 }
