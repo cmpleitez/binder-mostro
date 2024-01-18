@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Carbon\carbon;
+use Illuminate\Support\Str;
 
 use App\requisition_user;
 use App\requisition;
@@ -83,14 +84,31 @@ class ReportsController extends Controller
         return view('models.reports.private_reports', $data);
     }
 
-    Public function reporteVentas() {
-        $data['ventas'] = requisition::where('active', true)->whereHas('cart', function($query){
-            $query->where('purchased', true);
+    Public function reporteVentas(Request $request) {
+        $periodo = collect($request);
+        if (!$periodo->count()) {
+            $fecha_inicial = date ( 'Y.m.d' );
+            $fecha_final = date ( 'Y.m.d' );
+        } else {
+            $fecha_inicial =  date('Y.m.d', strtotime(Str::before($request->periodo, '-')));
+            $fecha_final =  date('Y.m.d', strtotime(Str::after($request->periodo, '-')));
+        }
+
+
+        $data['periodo'] = date('d.m.Y', strtotime(Str::before($request->periodo, ' - '))).'-'.date('d.m.Y', strtotime(Str::after($request->periodo, ' - ')));
+
+        //return $data['periodo'];
+
+        $data['ventas'] = requisition::where('active', true)->whereHas('cart', function($query) use ($fecha_inicial, $fecha_final){
+            $query->where('purchased', true)->where('created_at', '>=', $fecha_inicial)->where('created_at', '<=', $fecha_final);
         })->with('cart')->with('offer')->with('service')->get();
 
-        $data['total'] = requisition::where('active', true)->whereHas('cart', function($query){
-            $query->where('purchased', true);
+        $data['total'] = requisition::where('active', true)->whereHas('cart', function($query) use ($fecha_inicial, $fecha_final){
+            $query->where('purchased', true)->where('created_at', '>=', $fecha_inicial)->where('created_at', '<=', $fecha_final);
         })->sum('requisition_amount');
+
+        
+
         return view('models.reports.ventas', $data);
     }
 }

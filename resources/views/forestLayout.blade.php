@@ -23,7 +23,7 @@
     <!--<link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/tables/datatable/datatables.min.css">-->
     <!--<link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/tables/datatable/extensions/dataTables.checkboxes.css">-->
     <!--<link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/tables/datatable/responsive.bootstrap.min.css">-->
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/pickers/pickadate/pickadate.css')}}">
+    {{-- <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/pickers/pickadate/pickadate.css')}}"> --}}
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/pickers/daterange/daterangepicker.css')}}">
     <!-- END: Vendor CSS-->
 
@@ -242,12 +242,13 @@
     <script src="{{asset('app-assets/vendors/js/forms/spinner/jquery.bootstrap-touchspin.js')}}"></script>
     <!--<script src="../../../app-assets/vendors/js/extensions/dragula.min.js"></script>-->
 
-    {{-- <script src="{{asset('app-assets/vendors/js/pickers/pickadate/picker.js')}}"></script> --}}
-    {{-- <script src="{{asset('app-assets/vendors/js/pickers/pickadate/picker.date.js')}}"></script> --}}
-    {{-- <script src="{{asset('app-assets/vendors/js/pickers/pickadate/picker.time.js')}}"></script> --}}
+    {{-- <script src="{{asset('app-assets/vendors/js/pickers/pickadate/picker.js')}}"></script>
+    <script src="{{asset('app-assets/vendors/js/pickers/pickadate/picker.date.js')}}"></script>
+    <script src="{{asset('app-assets/vendors/js/pickers/pickadate/picker.time.js')}}"></script> --}}
+
     <script src="{{asset('app-assets/vendors/js/pickers/pickadate/legacy.js')}}"></script>
     <script src="{{asset('app-assets/vendors/js/pickers/daterange/moment.min.js')}}"></script>
-    <script src="{{asset('app-assets/vendors/js/pickers/daterange/daterangepicker.js')}}"></script>
+    {{-- <script src="{{asset('app-assets/vendors/js/pickers/daterange/daterangepicker.js')}}"></script> --}}
     <script src="{{asset('app-assets/vendors/js/extensions/sweetalert2.all.min.js')}}"></script>
     <!--<script src="../../../app-assets/vendors/js/extensions/polyfill.min.js"></script>-->
     <!-- END: Page Vendor JS-->
@@ -260,9 +261,8 @@
     <!-- BEGIN: Page JS-->
     <script src="{{asset('js/number-input.js')}}"></script>
     <script src="{{asset('app-assets/js/scripts/pages/app-invoice.js')}}"></script>
-    {{-- <script src="{{asset('app-assets/js/scripts/pickers/dateTime/pick-a-datetime.js')}}"></script> --}}
+    <script src="{{asset('app-assets/js/scripts/pickers/dateTime/pick-a-datetime.js')}}"></script>
     <script src="{{asset('app-assets/js/scripts/modal/components-modal.js')}}"></script>
-    <script src="{{asset('app-assets/js/scripts/extensions/sweet-alerts.js')}}"></script>
     <!--<script src="../../../page/lib/owlcarousel/owl.carousel.js"></script>-->
     <!-- END: Page JS-->
 

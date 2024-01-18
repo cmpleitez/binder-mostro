@@ -13,6 +13,8 @@
 	...🟠 automatizar el reporte detalle de ventas (precio según tipo de orden: oferta o producto regular )
 			... filtro por fechas
 			... si es oferta el precio por unidad es diferente de si es producto
+			... en el momento de la compra "purchase" se debe guardar la fecha actual en la tabla "cart", para usarla como pivote para el reporte de ventas
+			... formatear las fechas y pasar a español la librera rangepicker o algo asi
 	
 	🟠 implementar a nivel general el "control de retorno"
 

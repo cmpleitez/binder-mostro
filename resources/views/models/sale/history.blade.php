@@ -12,7 +12,7 @@
 				<div class="row">
 					<div class="col-md-4 text-left">
 						<fieldset class="form-group position-relative has-icon-left">
-						    <input type="text" class="form-control dateranges" placeholder="Select Date" name="periodo" value="{{ $periodo }}">
+						    <input type="text" class="form-control dateranges" placeholder="Seleccione su periodo" name="periodo" value="{{ $periodo }}">
 						    <div class="form-control-position">
 						        <i class="bx bx-calendar-check"></i>
 						    </div>
