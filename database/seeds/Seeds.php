@@ -54,7 +54,7 @@ class Seeds extends Seeder
             'area_id'           => 6,
             'name'              => 'system',
             'email'             => 'system@gmail.com',
-            'password'          => bcrypt('R3@1b1nd3r'),
+            'password'          => bcrypt('R3@lb1nd3r'),
             'remember_token'    => Str::random(10),
             'autoservicio'      => 0,
             'email_verified_at' => now(),
