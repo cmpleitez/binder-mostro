@@ -8,6 +8,8 @@ use App\requisition_user;
 use App\requisition;
 use App\cart;
 
+use DB;
+
 class ReportsController extends Controller
 {
     Public function privateReports() {
@@ -85,29 +87,50 @@ class ReportsController extends Controller
     }
 
     Public function reporteVentas(Request $request) {
+
         $periodo = collect($request);
+
         if (!$periodo->count()) {
-            $fecha_inicial = date ( 'Y.m.d' );
-            $fecha_final = date ( 'Y.m.d' );
+            $fecha_inicial = date ( 'Y-m-d' );
+            $fecha_final = date ( 'Y-m-d' );
         } else {
-            $fecha_inicial =  date('Y.m.d', strtotime(Str::before($request->periodo, '-')));
-            $fecha_final =  date('Y.m.d', strtotime(Str::after($request->periodo, '-')));
+            //return $fechas = explode('-', $request->periodo);
+            
+            //$fecha_limpia = str_replace(' ', '', ($fechas[1]));
+
+            //aqui debo tranformarlo a año-mes-dia
+            $fecha_final = Carbon::parse(strtotime('2024/01/20'))->format('Y-m-d');
+            
+            return $fecha_final;
+
+            //return '*'.$fecha_inicial_str_limpia.'*'.$fecha_final_str_limpia.'*';
+
         }
+        
+        //return '*'.$fecha_inicial.'*'.$fecha_final.'*';
 
+   //$fecha_inicial = '2024-01-13';
+   //$fecha_final = '2024-01-20';
 
-        $data['periodo'] = date('d.m.Y', strtotime(Str::before($request->periodo, ' - '))).'-'.date('d.m.Y', strtotime(Str::after($request->periodo, ' - ')));
+// return var_dump($fecha_inicial==$fecha_inicial_1);
 
-        //return $data['periodo'];
+//        return requisition::whereBetween('created_at', [$fecha_inicial, $fecha_final])->get();
+
+            // $fecha_inicial =  date('Y-m-d', strtotime($fecha_inicial_str_limpia));
+            ///$fecha_final =  date('Y-m-d', strtotime($fecha_final_str_limpia));
+            //$fecha_final = Carbon::parse(strtotime($fecha_limpia))->format('Y-m-d');
+
 
         $data['ventas'] = requisition::where('active', true)->whereHas('cart', function($query) use ($fecha_inicial, $fecha_final){
-            $query->where('purchased', true)->where('created_at', '>=', $fecha_inicial)->where('created_at', '<=', $fecha_final);
+            $query->where('purchased', true)->whereBetween('created_at', [$fecha_inicial, $fecha_final]);
+            
         })->with('cart')->with('offer')->with('service')->get();
 
         $data['total'] = requisition::where('active', true)->whereHas('cart', function($query) use ($fecha_inicial, $fecha_final){
             $query->where('purchased', true)->where('created_at', '>=', $fecha_inicial)->where('created_at', '<=', $fecha_final);
         })->sum('requisition_amount');
 
-        
+        $data['periodo'] = $request->periodo;
 
         return view('models.reports.ventas', $data);
     }
