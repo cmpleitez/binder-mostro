@@ -95,7 +95,7 @@
     <script>
         $('input[name="periodo"]').daterangepicker({
             locale: {
-                format: 'DD/MM/YYYY',
+                format: 'DD.MM.YYYY',
                 applyLabel: 'Aplicar',
                 cancelLabel: 'Cancelar',
                 fromLabel: 'Desde',
