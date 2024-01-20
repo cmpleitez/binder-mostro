@@ -88,6 +88,7 @@ class ReportsController extends Controller
 
     Public function reporteVentas(Request $request) {
         $periodo = collect($request);
+        
         if (!$periodo->count()) {
             $fecha_inicial = date ( 'Y-m-d' );
             $fecha_final = date ( 'Y-m-d' );
@@ -96,12 +97,13 @@ class ReportsController extends Controller
             $fecha_inicial = Carbon::parse(str_replace(' ', '', ($fechas[0])))->format('Y-m-d');
             $fecha_final = Carbon::parse(str_replace(' ', '', ($fechas[1])))->format('Y-m-d');
         }
+
         $data['ventas'] = requisition::where('active', true)->whereHas('cart', function($query) use ($fecha_inicial, $fecha_final){
-            $query->where('purchased', true)->whereDate('created_at', '>=', $fecha_inicial)->whereDate('created_at', '<=', $fecha_final);
+            $query->where('purchased', true)->whereDate('purchased_date', '>=', $fecha_inicial)->whereDate('purchased_date', '<=', $fecha_final);
         })->with('cart')->with('offer')->with('service')->get();
 
         $data['total'] = requisition::where('active', true)->whereHas('cart', function($query) use ($fecha_inicial, $fecha_final){
-            $query->where('purchased', true)->whereDate('created_at', '>=', $fecha_inicial)->whereDate('created_at', '<=', $fecha_final);
+            $query->where('purchased', true)->whereDate('purchased_date', '>=', $fecha_inicial)->whereDate('purchased_date', '<=', $fecha_final);
         })->sum('requisition_amount');
 
         $data['periodo'] = $request->periodo;

@@ -40,27 +40,27 @@
                     <table id="users-list-datatable" class="table">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th class="text-center">ID</th>
                                 <th>OFERTA</th>
                                 <th>PRODUCTO/SERVICIO</th>
-                                <th>UNIDADES</th>
-                                <th>PRECIO</th>
-                                <th>MONTO</th>
-                                <th>FECHA</th>
-                                <th>OTRO</th>
+                                <th class="text-center">UNIDADES</th>
+                                <th class="text-center">PRECIO</th>
+                                <th class="text-right">MONTO</th>
+                                <th class="text-center">RESERVA</th>
+                                <th class="text-center">COMPRA</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($ventas as $venta)
                                 <tr>
-                                    <td>{{ $venta->id }}</td>
+                                    <td class="text-center">{{ $venta->id }}</td>
                                     <td>{{ $venta->offer->offer }}</td>
                                     <td>{{ $venta->service->service }}</td>
-                                    <td>{{ $venta->supply_quantity }}</td>
-                                    <td>{{ $venta->supply_charge }}</td>
-                                    <td>{{ $venta->requisition_amount }}</td>
-                                    <td>{{ $venta->created_at }}</td>
-                                    <td><span class="badge badge-light-warning">otro</span></td>
+                                    <td class="text-center">{{ $venta->supply_quantity }}</td>
+                                    <td class="text-center">${{ number_format($venta->supply_charge, 2, '.', ',') }}</td>
+                                    <td class="text-right">${{ number_format($venta->requisition_amount, 2, '.', ',') }}</td>
+                                    <td class="text-center">{{ \Carbon\Carbon::parse($venta->created_at)->format('d-m-Y H:i') }}</td>
+                                    <td class="text-center"><span class="badge badge-light-warning">{{ \Carbon\Carbon::parse($venta->cart->purchased_date)->format('d-m-Y H:i') }}</span></td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -71,7 +71,7 @@
                                 <th></th>
                                 <th></th>
                                 <th></th>
-                                <th>TOTAL: {{ $total }}</th>
+                                <th class="text-right">TOTAL: ${{ number_format($total, 2, '.', ',') }}</th>
                                 <th></th>
                                 <th></th>
                             </tr>
