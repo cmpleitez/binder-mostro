@@ -83,14 +83,14 @@
                                     </a>
                                 </li>
                             @endif
-                            <li class="nav-item my-auto">@yield('catalog-switch')</li>
+                            <li class="nav-item my-auto">@yield('total')</li>
                         </ul>
                     </div>
                     @if (Auth::guest())
                     @else
-                        <ul class="nav navbar-nav float-left mx-auto">
-                            @yield('cliente')
-                            @yield('total')
+                        <ul class="nav navbar-nav d-flex mx-auto">
+                            <li class="nav-item">@yield('cliente')</li>
+                            <li class="nav-item ml-3">@yield('catalog-switch')</li>
                         </ul>
                         <ul class="nav navbar-nav float-right p-0">
                             <li class="nav-item my-auto">@yield('orden')</li>
