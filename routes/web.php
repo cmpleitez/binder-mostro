@@ -158,4 +158,3 @@ DB::listen(function($sql) {
     //Log::info($sql->time);
 });
 
-
