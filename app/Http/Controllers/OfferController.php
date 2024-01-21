@@ -47,7 +47,7 @@ class OfferController extends Controller
             $offer->pic = $path_file_name;
             $offer->save();
             $image = Image::make(Storage::get($path_file_name)); //Redimencionando mapa de bits
-            $image->fit(200, 200, function ($constraint) {
+            $image->fit(300, 300, function ($constraint) {
                 $constraint->upsize();
             })->encode();
             Storage::put($path_file_name, (string) $image);
@@ -75,7 +75,7 @@ class OfferController extends Controller
             $offer->save();
 
             $image = Image::make(Storage::get($path_file_name)); //Redimencionando mapa de bits
-            $image->fit(200, 200, function ($constraint) {
+            $image->fit(300, 300, function ($constraint) {
                 $constraint->upsize();
             })->encode();
             Storage::put($path_file_name, (string) $image);
