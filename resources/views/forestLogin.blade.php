@@ -103,7 +103,7 @@
                             <!-- footer section -->
                             <div class="col-12 card-footer text-right">
                                 <div class="font-small-2">Versión Beta @php
-                                    echo '1.0.2' . ' ( ' . date('d.m.Y H:i') . ' )';
+                                    echo '1.0.3 ( 21.01.2024 22:56 )';
                                 @endphp</div>
                             </div>
                         </div>

@@ -20,10 +20,6 @@
     <!--<link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/charts/apexcharts.css">-->
     <!--<link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/charts/apexcharts.css">-->
     <!--<link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/extensions/dragula.min.css">-->
-    <!--<link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/tables/datatable/datatables.min.css">-->
-    <!--<link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/tables/datatable/extensions/dataTables.checkboxes.css">-->
-    <!--<link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/tables/datatable/responsive.bootstrap.min.css">-->
-    {{-- <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/pickers/pickadate/pickadate.css')}}"> --}}
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/pickers/daterange/daterangepicker.css')}}">
     <!-- END: Vendor CSS-->
 

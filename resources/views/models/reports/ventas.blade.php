@@ -37,8 +37,8 @@
         <div class="card-content">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="users-list-datatable" class="table">
-                        <thead>
+                    <table id="ventas" class="table table-hover table-striped table-bordered" style="width:100%">
+                        <thead class="thead-light">
                             <tr>
                                 <th class="text-center">ID</th>
                                 <th>OFERTA</th>
@@ -58,9 +58,13 @@
                                     <td>{{ $venta->service->service }}</td>
                                     <td class="text-center">{{ $venta->supply_quantity }}</td>
                                     <td class="text-center">${{ number_format($venta->supply_charge, 2, '.', ',') }}</td>
-                                    <td class="text-right">${{ number_format($venta->requisition_amount, 2, '.', ',') }}</td>
-                                    <td class="text-center">{{ \Carbon\Carbon::parse($venta->created_at)->format('d-m-Y H:i') }}</td>
-                                    <td class="text-center"><span class="badge badge-light-warning">{{ \Carbon\Carbon::parse($venta->cart->purchased_date)->format('d-m-Y H:i') }}</span></td>
+                                    <td class="text-right">${{ number_format($venta->requisition_amount, 2, '.', ',') }}
+                                    </td>
+                                    <td class="text-center">
+                                        {{ \Carbon\Carbon::parse($venta->created_at)->format('d-m-Y H:i') }}</td>
+                                    <td class="text-center"><span
+                                            class="badge badge-light-warning">{{ \Carbon\Carbon::parse($venta->cart->purchased_date)->format('d-m-Y H:i') }}</span>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -86,13 +90,21 @@
     <script src="{{ asset('app-assets/vendors/js/tables/datatable/datatables.min.js') }}"></script>
     <script src="{{ asset('app-assets/vendors/js/tables/datatable/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('app-assets/js/scripts/pages/page-users.js') }}"></script>
-
-    <script src="{{ asset('app-assets/vendors/js/pickers/pickadate/picker.js') }}"></script>
-    <script src="{{ asset('app-assets/vendors/js/pickers/pickadate/picker.date.js') }}"></script>
-    <script src="{{ asset('app-assets/vendors/js/pickers/pickadate/picker.time.js') }}"></script>
     <script src="{{ asset('app-assets/vendors/js/pickers/daterange/daterangepicker.js') }}"></script>
 
     <script>
+        $("#ventas").DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": true,
+            "responsive": true,
+            "language": {
+                "url": "{{ asset('assets/Spanish.json')}}"
+            }
+        });
         $('input[name="periodo"]').daterangepicker({
             locale: {
                 format: 'DD.MM.YYYY',
@@ -115,7 +127,8 @@
                 'Este mes': [moment().startOf('month'), moment().endOf('month')],
                 'Mes pasado': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf(
                     'month')],
-                'El año pasado': [moment().subtract(1, 'year').startOf('year'), moment().subtract(1, 'year').endOf('year')]
+                'El año pasado': [moment().subtract(1, 'year').startOf('year'), moment().subtract(1, 'year').endOf(
+                    'year')]
             }
         });
     </script>
