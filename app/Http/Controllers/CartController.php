@@ -190,6 +190,7 @@ class CartController extends Controller
             
             //UPDATTING PURCHASED STATUS
             $cart->purchased = 1;
+            $cart->purchased_date = now(); //Fecha de compra del lado del servidor
             if(!$cart->save()){
                 toastr()->warning("Falló el intento de efectuar la compra", 'ID orden: '.$cart->id, [ 'timeOut' => 10000 ]);
                 return back();

@@ -47,7 +47,7 @@ class OfferController extends Controller
             $offer->pic = $path_file_name;
             $offer->save();
             $image = Image::make(Storage::get($path_file_name)); //Redimencionando mapa de bits
-            $image->fit(200, 200, function ($constraint) {
+            $image->fit(300, 300, function ($constraint) {
                 $constraint->upsize();
             })->encode();
             Storage::put($path_file_name, (string) $image);
@@ -75,7 +75,7 @@ class OfferController extends Controller
             $offer->save();
 
             $image = Image::make(Storage::get($path_file_name)); //Redimencionando mapa de bits
-            $image->fit(200, 200, function ($constraint) {
+            $image->fit(300, 300, function ($constraint) {
                 $constraint->upsize();
             })->encode();
             Storage::put($path_file_name, (string) $image);
@@ -88,7 +88,7 @@ class OfferController extends Controller
     public function bind(Offer $offer)
     {
         $offer_id = $offer->id;
-        $services = Service::where('active', true)->where('service_type_id', 3)->orWhere('service_type_id', 4)->with('service_type')->with('stock')->orderBy('service_type_id', 'desc')->paginate(24);
+        $services = Service::orWhere('service_type_id', 3)->orWhere('service_type_id', 4)->where('active', true)->with('service_type')->with('stock')->orderBy('service_type_id', 'desc')->paginate(24);
         foreach ($services as $key=>$service) {
             $service_id = $service->id;
             $enrolled = Offer::whereHas('service', function($query) use($offer_id, $service_id){

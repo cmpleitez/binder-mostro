@@ -20,10 +20,6 @@
     <!--<link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/charts/apexcharts.css">-->
     <!--<link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/charts/apexcharts.css">-->
     <!--<link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/extensions/dragula.min.css">-->
-    <!--<link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/tables/datatable/datatables.min.css">-->
-    <!--<link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/tables/datatable/extensions/dataTables.checkboxes.css">-->
-    <!--<link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/tables/datatable/responsive.bootstrap.min.css">-->
-    {{-- <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/pickers/pickadate/pickadate.css')}}"> --}}
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/pickers/daterange/daterangepicker.css')}}">
     <!-- END: Vendor CSS-->
 
@@ -83,14 +79,14 @@
                                     </a>
                                 </li>
                             @endif
-                            <li class="nav-item my-auto">@yield('catalog-switch')</li>
+                            <li class="nav-item my-auto">@yield('total')</li>
                         </ul>
                     </div>
                     @if (Auth::guest())
                     @else
-                        <ul class="nav navbar-nav float-left mx-auto">
-                            @yield('cliente')
-                            @yield('total')
+                        <ul class="nav navbar-nav d-flex mx-auto">
+                            <li class="nav-item">@yield('cliente')</li>
+                            <li class="nav-item ml-3">@yield('catalog-switch')</li>
                         </ul>
                         <ul class="nav navbar-nav float-right p-0">
                             <li class="nav-item my-auto">@yield('orden')</li>

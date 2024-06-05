@@ -60,17 +60,6 @@ class Seeds extends Seeder
             'email_verified_at' => now(),
         ]);
 
-        DB::table('users')->insert([
-            'id'                => 2,
-            'branch_id'         => 1,
-            'area_id'           => 1,
-            'name'              => 'Criss Angel',
-            'email'             => 'cangel@gmail.com',
-            'password'          => bcrypt('123456'),
-            'remember_token'    => Str::random(10),
-            'autoservicio'      => 0,
-            'email_verified_at' => now(),
-        ]);
         DB::unprepared('SET IDENTITY_INSERT users OFF');
 
         //OPTIONS
@@ -1724,6 +1713,10 @@ class Seeds extends Seeder
             'role_id'              => 8,
             'service_id'           => 101,
         ]);
+        DB::table('role_service')->insert([
+            'role_id'              => 8,
+            'service_id'           => 50,
+        ]);
 
         DB::table('role_service')->insert([ //SUPERVISOR
             'role_id'              => 9,
@@ -1767,11 +1760,6 @@ class Seeds extends Seeder
         DB::table('role_user')->insert([
             'user_id'           => 1,
             'role_id'           => 8,
-        ]);
-        
-        DB::table('role_user')->insert([
-            'user_id'           => 2,
-            'role_id'           => 1,
         ]);
                 
         //OFFERS

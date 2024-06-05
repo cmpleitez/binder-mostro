@@ -9,15 +9,7 @@
 	👌🟠 Pruebas alfa
 	👌🟠 maqueacion de vista seleccion del cliente
 	👌🟠 agregar titulos en los catalogos
-	
-	...🟠 automatizar el reporte detalle de ventas (precio según tipo de orden: oferta o producto regular )
-			... filtro por fechas
-			... si es oferta el precio por unidad es diferente de si es producto
-			... en el momento de la compra "purchase" se debe guardar la fecha actual en la tabla "cart", para usarla como pivote para el reporte de ventas
-			... formatear las fechas y pasar a español la librera rangepicker o algo asi
-	
-	🟠 implementar a nivel general el "control de retorno"
-
+	👌🟠 automatizar el reporte detalle de ventas (precio según tipo de orden: oferta o producto regular )
 
 - SALA DE VENTAS: ©K
 
@@ -32,20 +24,20 @@
 - CONTROL DE CALIDAD Y SUPERVISIÓN: ©K
 
  - SERVICIOS PROYECTADOS ---------------------------------------------------
-	 	SERVICIOS PROMOCIONALES:
-		 	- permisos para uso de un nuevo usuario "binder" en lugar de "sa"
-			- offer.bind: agregar search
-			- Anulación de facturas en los cuadres de caja: el supervisor unicamente puede ver su cuadre de caja con el panel de control completo, el servicio de anulaciòn de facturas para operadores aún no está construido, crear "cashboxits".
-			- Código de barras
-			- Offer Requisition's Alikes
-			- Envio de factura digital: por seguridad se debe enviar la versión html, para evitar la replicación y fraude por modificación.
-			- Se puede implementar una rutina de soporte para cada producto o servicio de mano de obra agregando un item de soporte por cada periodo pagado y se agrega ademas las fechas en finalización o vencimiento de cada soporte.
-			- en el historico de cajas no muestra en la pagina de entrada las cajas de hoy
-			- task.its: no deberia verse el boton reportar pues el control de calidad no reporta las tareas de un operador
-			- el "gestor de tareas"
-			- mascaras de salida
-		 	+ tal pareciera que otras columnas de datos que hay en la zona de las tablas padres de la transaccional, requiriesen que se trasladen a la transaccional debido a la necesidad de aplicación de controles de calidad sobre las mismas
-		 	+ hay una posible repeticion de tabla en las tablas "stock" y "branch_service", por lo sensible del error hay que procesar éste item por separado y de manera independiente
+	🟠 implementar a nivel general el "control de retorno"
+	- permisos para uso de un nuevo usuario "binder" en lugar de "sa"
+	- offer.bind: agregar search
+	- Anulación de facturas en los cuadres de caja: el supervisor unicamente puede ver su cuadre de caja con el panel de control completo, el servicio de anulaciòn de facturas para operadores aún no está construido, crear "cashboxits".
+	- Código de barras
+	- Offer Requisition's Alikes
+	- Envio de factura digital: por seguridad se debe enviar la versión html, para evitar la replicación y fraude por modificación.
+	- Se puede implementar una rutina de soporte para cada producto o servicio de mano de obra agregando un item de soporte por cada periodo pagado y se agrega ademas las fechas en finalización o vencimiento de cada soporte.
+	- en el historico de cajas no muestra en la pagina de entrada las cajas de hoy
+	- task.its: no deberia verse el boton reportar pues el control de calidad no reporta las tareas de un operador
+	- el "gestor de tareas"
+	- mascaras de salida
+	+ tal pareciera que otras columnas de datos que hay en la zona de las tablas padres de la transaccional, requiriesen que se trasladen a la transaccional debido a la necesidad de aplicación de controles de calidad sobre las mismas
+	+ hay una posible repeticion de tabla en las tablas "stock" y "branch_service", por lo sensible del error hay que procesar éste item por separado y de manera independiente
 
 PROCESO BASE --------------------------------------------------------------
 El proceso implicaría que un vendedor haga la negociación del producto/servicio y lo registre como facturación futura, en un segundo paso lo facture digitalmente y en un tercer paso imprima la factura. Tambien podría hacer esos tres pasos en una sola sesión, cuando se trate de una facturación contra entrega. Esto basado en que el purchase es solo una confirmación de la venta, pero quien en realidad confirma el pago es el "facturado".

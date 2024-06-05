@@ -16,7 +16,9 @@ class CreateCartsTable extends Migration
             
             $table->decimal('amount', 15, 6);
             $table->decimal('tax', 15, 6);
+            $table->dateTimeTz('purchased_date')->nullable();
             $table->string('voucher')->nullable();
+            
             $table->boolean('purchased')->default(0);
             $table->boolean('invoiced')->default(0);
             $table->boolean('closed')->default(0);

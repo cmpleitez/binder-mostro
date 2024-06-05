@@ -151,7 +151,7 @@ class ServiceController extends Controller
     }
 
     public function search( Request $request ) {
-        $services = Service::where('active', true)->Search($request->search)->orderBy('service_type_id', 'asc')->paginate(5);
+        $services = Service::Search($request->search)->orderBy('service_type_id', 'asc')->paginate(5);
         return view('models.service.index', compact('services'));
     }
 
